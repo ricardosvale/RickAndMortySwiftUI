@@ -29,20 +29,23 @@
 		92BB44712CC88D7500247E2E /* RickAndMortySwiftUIUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RickAndMortySwiftUIUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		92BB44892CC89E5B00247E2E /* Exceptions for "RickAndMortySwiftUI" folder in "RickAndMortySwiftUI" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 92BB44562CC88D7300247E2E /* RickAndMortySwiftUI */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		92BB44592CC88D7300247E2E /* RickAndMortySwiftUI */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				92BB44892CC89E5B00247E2E /* Exceptions for "RickAndMortySwiftUI" folder in "RickAndMortySwiftUI" target */,
+			);
 			path = RickAndMortySwiftUI;
-			sourceTree = "<group>";
-		};
-		92BB446A2CC88D7500247E2E /* RickAndMortySwiftUITests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = RickAndMortySwiftUITests;
-			sourceTree = "<group>";
-		};
-		92BB44742CC88D7500247E2E /* RickAndMortySwiftUIUITests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = RickAndMortySwiftUIUITests;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -76,8 +79,6 @@
 			isa = PBXGroup;
 			children = (
 				92BB44592CC88D7300247E2E /* RickAndMortySwiftUI */,
-				92BB446A2CC88D7500247E2E /* RickAndMortySwiftUITests */,
-				92BB44742CC88D7500247E2E /* RickAndMortySwiftUIUITests */,
 				92BB44582CC88D7300247E2E /* Products */,
 			);
 			sourceTree = "<group>";
@@ -130,9 +131,6 @@
 			dependencies = (
 				92BB44692CC88D7500247E2E /* PBXTargetDependency */,
 			);
-			fileSystemSynchronizedGroups = (
-				92BB446A2CC88D7500247E2E /* RickAndMortySwiftUITests */,
-			);
 			name = RickAndMortySwiftUITests;
 			packageProductDependencies = (
 			);
@@ -152,9 +150,6 @@
 			);
 			dependencies = (
 				92BB44732CC88D7500247E2E /* PBXTargetDependency */,
-			);
-			fileSystemSynchronizedGroups = (
-				92BB44742CC88D7500247E2E /* RickAndMortySwiftUIUITests */,
 			);
 			name = RickAndMortySwiftUIUITests;
 			packageProductDependencies = (
@@ -399,6 +394,7 @@
 				DEVELOPMENT_TEAM = 94QMJZ58ZW;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = RickAndMortySwiftUI/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -428,6 +424,7 @@
 				DEVELOPMENT_TEAM = 94QMJZ58ZW;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = RickAndMortySwiftUI/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
