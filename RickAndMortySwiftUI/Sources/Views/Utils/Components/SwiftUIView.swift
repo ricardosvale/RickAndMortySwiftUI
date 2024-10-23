@@ -7,12 +7,18 @@
 
 import SwiftUI
 
-struct SwiftUIView: View {
+struct Background: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        ZStack {
+            Image("imgBack")
+                .resizable()
+                .scaledToFill()
+                
+        }.background(.back)
+        .edgesIgnoringSafeArea(.all)
     }
 }
 
 #Preview {
-    SwiftUIView()
+    Background()
 }
