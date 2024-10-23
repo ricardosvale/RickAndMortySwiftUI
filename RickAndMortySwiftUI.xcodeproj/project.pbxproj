@@ -6,11 +6,6 @@
 	objectVersion = 77;
 	objects = {
 
-/* Begin PBXBuildFile section */
-		92BB44852CC89D6100247E2E /* JockeyOne.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 92BB44842CC89D6100247E2E /* JockeyOne.ttf */; };
-		92BB44872CC89D8D00247E2E /* Jost.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 92BB44862CC89D8D00247E2E /* Jost.ttf */; };
-/* End PBXBuildFile section */
-
 /* Begin PBXContainerItemProxy section */
 		92BB44682CC88D7500247E2E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -32,8 +27,6 @@
 		92BB44572CC88D7300247E2E /* RickAndMortySwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RickAndMortySwiftUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		92BB44672CC88D7500247E2E /* RickAndMortySwiftUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RickAndMortySwiftUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		92BB44712CC88D7500247E2E /* RickAndMortySwiftUIUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RickAndMortySwiftUIUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		92BB44842CC89D6100247E2E /* JockeyOne.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = JockeyOne.ttf; sourceTree = "<group>"; };
-		92BB44862CC89D8D00247E2E /* Jost.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Jost.ttf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -85,8 +78,6 @@
 		92BB444E2CC88D7300247E2E = {
 			isa = PBXGroup;
 			children = (
-				92BB44862CC89D8D00247E2E /* Jost.ttf */,
-				92BB44842CC89D6100247E2E /* JockeyOne.ttf */,
 				92BB44592CC88D7300247E2E /* RickAndMortySwiftUI */,
 				92BB44582CC88D7300247E2E /* Products */,
 			);
@@ -216,8 +207,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				92BB44872CC89D8D00247E2E /* Jost.ttf in Resources */,
-				92BB44852CC89D6100247E2E /* JockeyOne.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
