@@ -16,8 +16,7 @@ jobs:
     - name: Checkout source code
       uses: actions/checkout@v3
 
-    - name: Set up Xcode 15.x
-      run: sudo xcode-select -switch /Applications/Xcode.app/Contents/Developer
+    
 
     - name: Build Rick and Morty App
       run: xcodebuild -scheme "RickAndMortySwiftUI" -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 15,OS=17.5' build
