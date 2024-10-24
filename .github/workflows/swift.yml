@@ -1,0 +1,28 @@
+# This workflow will build a Swift project
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-swift
+name: Rick and Morty App CI
+
+on:
+  push:
+    branches:
+      - dev
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: macos-latest
+
+    steps:
+    - name: Checkout source code
+      uses: actions/checkout@v3
+
+    - name: Set up Xcode
+      run: sudo xcode-select -switch /Applications/Xcode.app/Contents/Developer
+
+    - name: Build Rick and Morty App
+      run: xcodebuild -scheme "RickAndMortySwiftUI" -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 14,OS=16.6' build
+
+    - name: Run Tests
+      run: xcodebuild test -scheme "RickAndMortySwiftUI" -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 14,OS=16.6'
