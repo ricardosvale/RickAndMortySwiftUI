@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 70;
+	objectVersion = 77;
 	objects = {
 
 /* Begin PBXContainerItemProxy section */
@@ -30,7 +30,7 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		92BB44892CC89E5B00247E2E /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+		92BB44892CC89E5B00247E2E /* Exceptions for "RickAndMortySwiftUI" folder in "RickAndMortySwiftUI" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Info.plist,
@@ -40,7 +40,14 @@
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		92BB44592CC88D7300247E2E /* RickAndMortySwiftUI */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (92BB44892CC89E5B00247E2E /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = RickAndMortySwiftUI; sourceTree = "<group>"; };
+		92BB44592CC88D7300247E2E /* RickAndMortySwiftUI */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				92BB44892CC89E5B00247E2E /* Exceptions for "RickAndMortySwiftUI" folder in "RickAndMortySwiftUI" target */,
+			);
+			path = RickAndMortySwiftUI;
+			sourceTree = "<group>";
+		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -175,7 +182,6 @@
 				};
 			};
 			buildConfigurationList = 92BB44522CC88D7300247E2E /* Build configuration list for PBXProject "RickAndMortySwiftUI" */;
-			compatibilityVersion = "Xcode 15.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -184,6 +190,7 @@
 			);
 			mainGroup = 92BB444E2CC88D7300247E2E;
 			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
 			productRefGroup = 92BB44582CC88D7300247E2E /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -393,7 +400,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -424,7 +431,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
