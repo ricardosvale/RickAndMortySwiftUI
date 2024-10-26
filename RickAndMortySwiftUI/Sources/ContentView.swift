@@ -14,10 +14,10 @@ struct ContentView: View {
                 .imageScale(.large)
                 .foregroundStyle(Color(.characterPage))
             Text("Hello, world!")
-                .foregroundColor(.label)
+                .foregroundColor(.colorLabel)
                 .font(.jost(.bold, size: 16))
             Text("Hello, world!")
-                .foregroundColor(.label)
+                .foregroundColor(.colorLabel)
                 .font(.jockeyOne(size: 32))
                 
         }
