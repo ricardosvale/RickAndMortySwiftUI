@@ -1,5 +1,5 @@
 //
-//  Episodes.swift
+//  Episode.swift
 //  RickAndMortySwiftUI
 //
 //  Created by Ricardo Silva Vale on 26/10/24.
