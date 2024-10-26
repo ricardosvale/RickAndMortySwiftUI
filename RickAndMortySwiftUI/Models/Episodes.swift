@@ -7,12 +7,12 @@
 
 import Foundation
 
-struct Episodes: Codable, Identifiable {
+struct Episode: Codable, Identifiable {
     let id: Int
     let name: String
     let airDate: String
     let episode: String
-    let characters: [Characters]
+    let characters: [Character]
     
     enum CodingKeys: String, CodingKey {
         case id, name, episode, characters
