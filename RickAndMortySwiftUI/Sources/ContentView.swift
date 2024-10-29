@@ -27,6 +27,10 @@ struct ContentView: View {
             
                 .onAppear{
                     viewmodel.getCharacters()
+                    DispatchQueue.main.async {
+                        ServiceTeste.loadCharacter()
+                    }
+                    
             }
         }
         
