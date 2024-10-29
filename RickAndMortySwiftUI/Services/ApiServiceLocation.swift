@@ -1,18 +1,17 @@
 //
-//  ApiService.swift
+//  ApiServiceLocation.swift
 //  RickAndMortySwiftUI
 //
-//  Created by Ricardo Silva Vale on 26/10/24.
+//  Created by Ricardo Silva Vale on 29/10/24.
 //
+
 import Foundation
 import Combine
 
-class ApiServiceCharacter : ObservableObject {
+class ApiServiceLocation : ObservableObject {
+    private let baseUrl: String = "https://rickandmortyapi.com/api/location"
     
-    static var singleton = ApiServiceCharacter()
-    private let baseUrl: String = "https://rickandmortyapi.com/api/character"
-    
-    @Published var characters: [Character] = []
+    @Published var locations: [Location] = []
     
     func getCharacters() {
        // transformando a string em uma URL
@@ -21,9 +20,9 @@ class ApiServiceCharacter : ObservableObject {
         let task = URLSession.shared.dataTask(with: url) { data, response, error in
            if let data = data {
                do{
-                   let decodedResponse = try JSONDecoder().decode(CharacterResponse.self, from: data)
+                   let decodedResponse = try JSONDecoder().decode(LocationResponse.self, from: data)
                    DispatchQueue.main.async {
-                       self.characters = decodedResponse.results
+                       self.locations = decodedResponse.results
                        print("Resultado:\(decodedResponse.results[0])")
                    }
                } catch{

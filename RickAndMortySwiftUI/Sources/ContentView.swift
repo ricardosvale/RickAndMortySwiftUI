@@ -8,6 +8,10 @@
 import SwiftUI
 
 struct ContentView: View {
+    @StateObject private var viewmodel
+    = ApiServiceCharacter()
+//    @StateObject private var viewmodel
+//    = ApiServiceLocation()
     var body: some View {
         VStack {
             Image(systemName: "globe")
@@ -19,12 +23,15 @@ struct ContentView: View {
             Text("Hello, world!")
                 .foregroundColor(.colorLabel)
                 .font(.jockeyOne(size: 32))
-                
+                .padding()
+            
+                .onAppear{
+                    viewmodel.getCharacters()
+            }
         }
-        .padding()
+        
     }
 }
-
 #Preview {
     ContentView()
 }
