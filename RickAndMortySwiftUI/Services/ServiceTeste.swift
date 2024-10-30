@@ -7,41 +7,61 @@
 
 import Foundation
 
+enum CharacterError: Error {
+    case url
+    case taskError(error: Error)
+    case noResponse
+    case noData
+    case responseStatusCode(code: Int)
+    case invalidJSON
+}
+
 final class ServiceTeste {
     private static let basePath = "https://rickandmortyapi.com/api/character"
     
-    class func loadCharacter() {
-        // Transformando minha string em uma URL
-        guard let url = URL(string: basePath) else { return }
-        
-        // Criando a Tarefa de Sessão usando completion
+    class func loadCharacter(onComplete: @escaping (CharacterResponse) -> Void, onError: @escaping (CharacterError) -> Void) {
+        guard let url = URL(string: basePath) else {
+            onError(.url)
+            return
+        }
+         
         let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
-            if error == nil {
-                // Verificando se o response e tratando ele como HTTURLResponse
-                guard let response = response as? HTTPURLResponse else { return }
-                if response.statusCode == 200 {
-                    guard let data = data else { return }
-                    
-                    do {
-                        // Decodificando o JSON e atribuido o data no CharacterResponse
-                        let characters = try JSONDecoder().decode(CharacterResponse.self, from: data)
-                        for character in characters.results {
-                            print(character.name)
-                        }
-                    } catch{
-                        print(error.localizedDescription)
-                    }
-                }else {
-                    print("Erro no servidor!")
-                }
-                
-                
-            } else{
-                print(error!)
+            if let error = error {
+                print("Connection error: \(error.localizedDescription)")
+                onError(.taskError(error: error))
+                return
             }
             
+            guard let response = response as? HTTPURLResponse else {
+                onError(.noResponse)
+                return
+            }
+            
+            if response.statusCode == 200 {
+                guard let data = data else {
+                    onError(.noData)
+                    return
+                }
+                
+                do {
+                    let characters = try JSONDecoder().decode(CharacterResponse.self, from: data)
+                    
+                    // Exibir no console a resposta decodificada
+                    print("Decoded API Response: \(characters)")
+                    
+                    DispatchQueue.main.async {
+                        onComplete(characters)
+                    }
+                    
+                } catch {
+                    print("JSON decoding error: \(error.localizedDescription)")
+                    onError(.invalidJSON)
+                }
+            } else {
+                print("HTTP Error: \(response.statusCode)")
+                onError(.responseStatusCode(code: response.statusCode))
+            }
         }
         task.resume()
     }
 }
-
