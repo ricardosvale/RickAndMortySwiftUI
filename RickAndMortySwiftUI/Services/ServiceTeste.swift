@@ -17,7 +17,7 @@ enum CharacterError: Error {
 }
 
 final class ServiceTeste {
-    private static let basePath = "https://rickandmortyapi.com/api/character"
+    private static let basePath = "http://localhost:3000/https:/rickandmortyapi.com/api/character"
     
     class func loadCharacter(onComplete: @escaping (CharacterResponse) -> Void, onError: @escaping (CharacterError) -> Void) {
         guard let url = URL(string: basePath) else {

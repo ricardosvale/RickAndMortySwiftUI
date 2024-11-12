@@ -8,49 +8,75 @@
 import SwiftUI
 
 struct CardCharacters: View {
+    let character: Character
+    private var statusColor: Color {
+           CharacterStatus(from: character.status).color
+       }
+    
     var body: some View {
-        ZStack (alignment: .center){
+        ZStack(alignment: .center) {
             RoundedRectangle(cornerRadius: 10)
                 .fill(.cardCharacters)
                 .stroke(Color(.colorTerciary), lineWidth: 2)
                 .shadow(color: .black.opacity(0.25), radius: 4, x: 0, y: 2)
         
             VStack(alignment: .center, spacing: 5) {
-                Image("caracters")
-                    .resizable()
-                    .scaledToFill()
-                    .cornerRadius(14)
-                    .frame(width: 133, height: 133)
+                AsyncImage(url: URL(string: character.image)) { phase in
+                    switch phase {
+                    case .empty:
+                        ProgressView()
+                            .frame(width: 133, height: 133)
+                    case .success(let image):
+                        image
+                            .resizable()
+                            .scaledToFill()
+                            .cornerRadius(14)
+                            .frame(width: 133, height: 133)
+                    case .failure:
+                        Image(systemName: "photo")
+                            .resizable()
+                            .scaledToFill()
+                            .cornerRadius(14)
+                            .frame(width: 133, height: 133)
+                    @unknown default:
+                        EmptyView()
+                    }
+                }
                 
-                Text("Rick Sanchez")
+                Text(character.name)
                     .font(.jockeyOne(size: 24))
                     .padding(.bottom, -5)
                     .lineLimit(1)
+                    .foregroundColor(.colorLabel)
                 
-                Text("Human")
-                    .font(.kodeMono(.regular, size:16))
+                Text(character.species)
+                    .font(.kodeMono(.regular, size: 16))
                     .lineLimit(1)
-                
-                Text("Alive")
+                    .foregroundColor(.colorLabel)
+                Text(character.status)
                     .font(.kodeMono(.medium, size: 16))
                     .padding(.horizontal, 14)
-                    .foregroundColor(.colorPrimary)
+                    .foregroundColor(statusColor)
                     .background(
                         RoundedRectangle(cornerRadius: 5)
-                            .stroke(Color.colorPrimary, lineWidth: 2)
+                            .stroke(statusColor, lineWidth: 2)
                     )
             }
-            .padding(.top, 13)
-            .padding(.bottom, 14)
-            .padding(.horizontal, 20)
-            .foregroundColor(.white)
-            
         }
-        
         .frame(width: 176, height: 240)
     }
 }
 
 #Preview {
-    CardCharacters()
+    CardCharacters(character: Character(
+            id: 1,
+            name: "Rick Sanchez",
+            status: "Alive",
+            species: "Human",
+            gender: "Male",
+            origin: Origin(name: "Earth", url: ""),
+            location: LocationCharacter(name: "Citadel of Ricks", url: ""),
+            image: "https://rickandmortyapi.com/api/character/avatar/1.jpeg",
+            episode: ["https://rickandmortyapi.com/api/episode/1", "https://rickandmortyapi.com/api/episode/2"]
+        ))
 }
