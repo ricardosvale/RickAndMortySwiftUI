@@ -8,7 +8,7 @@
 import Foundation
 
 struct Episode: Codable, Identifiable {
-    let id: Int
+    let id: Int?
     let name: String
     let airDate: String
     let episode: String
