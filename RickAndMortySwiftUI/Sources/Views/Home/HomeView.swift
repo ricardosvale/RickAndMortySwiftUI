@@ -16,9 +16,15 @@ struct HomeView: View {
                 Text("Wubba lubba dub dub!")
                     .font(.jockeyOne(size: 42))
                     .padding(10)
+                    .padding(.top, 30)
+                
                 CardNavigationHome(title: "Personagens", description: "Detalhes sobre o personagem")
+                
                 CardNavigationHome(title: "Universo", description: "Explore os mundos dentro do universo Rick and Morty")
+                
                 CardNavigationHome(title: "Episódios", description: "Todos os episódios da série com detalhes")
+                
+                Spacer()
             }
         }
     }
