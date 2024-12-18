@@ -9,7 +9,7 @@ import SwiftUI
 
 struct CardCharacters: View {
     let character: Character
-    private var statusColor: Color {
+     var statusColor: Color {
            CharacterStatus(from: character.status).color
        }
     
