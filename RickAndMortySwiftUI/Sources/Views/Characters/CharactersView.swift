@@ -11,6 +11,8 @@ struct CharactersView: View {
     
     var body: some View {
         Text("teste")
+        Text("teste")
+        
         
     }
 }
