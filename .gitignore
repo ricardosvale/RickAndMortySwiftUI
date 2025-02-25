@@ -1,0 +1,21 @@
+# Ignore os arquivos de configuração do Xcode
+*.xcuserstate
+*.xcuserdatad
+*.xcworkspace
+
+# Ignore arquivos do projeto Xcode
+*.xcodeproj/project.xcworkspace
+checkout dev.xcodeproj/project.xcworkspace/contents.xcworkspacedata
+xcuserdata/
+
+# Ignore pastas de builds
+build/
+DerivedData/
+
+# Ignore arquivos do simulador
+*.log
+*.hmap
+
+# Ignore as configurações do Xcode para usuários específicos
+*.swp
+*.swo
