@@ -14,7 +14,7 @@ struct Character: Codable, Identifiable {
     let species: String
     let gender: String
     let origin: Origin
-    let location: Location
+    let location: LocationCharacter
     let image: String
     let episode: [String]
     
