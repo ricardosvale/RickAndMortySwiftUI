@@ -9,7 +9,7 @@ import SwiftUI
 
 struct CardCharacters: View {
     let character: Character
-    private var statusColor: Color {
+     var statusColor: Color {
            CharacterStatus(from: character.status).color
        }
     
@@ -68,15 +68,5 @@ struct CardCharacters: View {
 }
 
 #Preview {
-    CardCharacters(character: Character(
-            id: 1,
-            name: "Rick Sanchez",
-            status: "Alive",
-            species: "Human",
-            gender: "Male",
-            origin: Origin(name: "Earth", url: ""),
-            location: LocationCharacter(name: "Citadel of Ricks", url: ""),
-            image: "https://rickandmortyapi.com/api/character/avatar/1.jpeg",
-            episode: ["https://rickandmortyapi.com/api/episode/1", "https://rickandmortyapi.com/api/episode/2"]
-        ))
+    CharacterDetails(character: Character.characterMock())
 }
