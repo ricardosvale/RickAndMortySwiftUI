@@ -24,6 +24,19 @@ extension Font {
             }
         }
     }
+    enum Instrument {
+        case bold
+        case medium
+        
+        var fontName: String {
+            switch self {
+           case .bold:
+                return "InstrumentSans-Bold"
+            case .medium:
+                return "InstrumentSans-Medium"
+            }
+        }
+    }
     
     enum KodeMono {
         case regular
@@ -47,6 +60,9 @@ extension Font {
     }
     
     static func kodeMono(_ type: KodeMono, size: CGFloat) -> Font {
+        return Font.custom(type.fontName, size: size)
+    }
+    static func instrument(_ type: Instrument, size: CGFloat) -> Font {
         return Font.custom(type.fontName, size: size)
     }
 }
