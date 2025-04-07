@@ -24,7 +24,7 @@ struct Episodes: View {
             Text("S01E01")
                 .font(.kodeMono(.regular, size: 14))
                 .padding(.vertical, -15)
-                .padding(.horizontal, 18)
+                .padding(.horizontal, 8)
         }
         .foregroundStyle(.white)
         .background(.episodes)
