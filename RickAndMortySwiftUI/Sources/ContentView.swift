@@ -10,6 +10,7 @@ import SwiftUI
 struct ContentView: View {
     @State private var characters: [Character] = []
     
+    
     var body: some View {
         ScrollView {
             VStack(alignment: .leading) {

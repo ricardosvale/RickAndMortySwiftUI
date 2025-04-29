@@ -10,7 +10,13 @@ import Combine
 final class CharacterViewModel: ObservableObject {
     @Published var characters: [Character] = []
     @Published var isLoading: Bool = false
-    @Published var errorMessage: String? = nil
+    @Published var errorMessage: String?
+    
+    private let service: CharacterServiceProtocol
+    
+    init(service: CharacterServiceProtocol = CharacterRequest()){
+        self.service = service
+    }
     
     func fetchCharacters() {
         isLoading = true
@@ -40,12 +46,18 @@ final class CharacterViewModel: ObservableObject {
     
     func fetchCharactersData() {
         Task {
-            do {
-                let characters = try await fetchCharactersAwait
-            } catch {
-                
-            }
+            isLoading = true
             
+            do {
+                characters = try await service.fetchCharactesAwait()
+            } catch {
+                if let apiError = error as? APIError {
+                    errorMessage = apiError.localizedDescription
+                } else {
+                    errorMessage = "Ocorreu um erro inesperado: \(error.localizedDescription)."
+                }
+            }
+            isLoading = false
         }
     }
 }
