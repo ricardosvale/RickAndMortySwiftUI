@@ -7,11 +7,6 @@
 
 import Foundation
 
-enum APIError: Error {
-    case invalidURL
-    case decodingFailed
-    case networkError(Error)
-}
 
 enum BaseURL {
     static let api = "https://rickandmortyapi.com/api/"
