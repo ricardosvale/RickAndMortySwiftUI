@@ -7,26 +7,30 @@
 
 import Foundation
 
-
-enum BaseURL {
-    static let api = "https://rickandmortyapi.com/api/"
-}
-final class CharacterRequest {
+final class CharacterRequest: CharacterServiceProtocol {
     
-    func fetchCharactersAwait() async throws -> [Character] {
-        let endpoint = "\(BaseURL.api)character"
-        guard let url = URL(string: endpoint) else {
+    func fetchCharactesAwait() async throws -> [Character] {
+        
+        guard let url = URL(string: Endpoint.characters) else {
             throw APIError.invalidURL
         }
         
         do {
             
             let (data, response) = try await URLSession.shared.data(from: url)
+            guard let httpResponse = response as? HTTPURLResponse,
+                  (200...299).contains(httpResponse.statusCode)
+            else {
+                let statusCode = (response as? HTTPURLResponse)?.statusCode ?? -1
+                throw APIError.invalidStatusCode(statusCode)
+            }
+            
             let decoder = JSONDecoder()
             let characterData = try decoder.decode(CharacterResponse.self, from: data)
             return characterData.results
-            
-        } catch  {
+        } catch is DecodingError {
+            throw APIError.decodingFailed
+         } catch  {
             throw APIError.networkError(error)
         }
     }
