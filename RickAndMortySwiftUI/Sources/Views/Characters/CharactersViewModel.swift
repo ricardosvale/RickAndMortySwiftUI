@@ -37,4 +37,15 @@ final class CharacterViewModel: ObservableObject {
             }
         }
     }
+    
+    func fetchCharactersData() {
+        Task {
+            do {
+                let characters = try await fetchCharactersAwait
+            } catch {
+                
+            }
+            
+        }
+    }
 }
