@@ -6,7 +6,7 @@
 //
 import Foundation
 
-final class ApiServiceCharacter : ObservableObject {
+final class ApiServiceCharacter: ObservableObject {
     
     static var singleton = ApiServiceCharacter()
     private let baseUrl: String = "https://rickandmortyapi.com/api/character"

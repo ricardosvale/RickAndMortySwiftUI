@@ -11,17 +11,13 @@ final class CharacterViewModel: ObservableObject {
     @Published var characters: [Character] = []
     @Published var isLoading: Bool = false
     @Published var errorMessage: String?
-    
     private let service: CharacterServiceProtocol
-    
     init(service: CharacterServiceProtocol = CharacterRequest()){
         self.service = service
     }
-    
     func fetchCharacters() {
         isLoading = true
         errorMessage = nil
-        
         ServiceTeste.loadCharacter { [weak self] response in
             self?.isLoading = false
             self?.characters = response.results
