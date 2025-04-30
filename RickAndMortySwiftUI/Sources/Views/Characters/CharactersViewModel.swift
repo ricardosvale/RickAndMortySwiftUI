@@ -7,6 +7,8 @@
 import SwiftUI
 import Combine
 
+@MainActor
+
 final class CharacterViewModel: ObservableObject {
     @Published var characters: [Character] = []
     @Published var isLoading: Bool = false
