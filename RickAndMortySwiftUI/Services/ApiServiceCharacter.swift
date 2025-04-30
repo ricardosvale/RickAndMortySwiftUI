@@ -13,7 +13,7 @@ final class ApiServiceCharacter: ObservableObject {
     
     @Published var characters: [Character] = []
     
-    func getCharacters(){
+    func getCharacters() {
        // transformando a string em uma URL
         guard let url = URL(string: baseUrl) else { return }
       
@@ -21,18 +21,17 @@ final class ApiServiceCharacter: ObservableObject {
         
         let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
             guard let data = data else {return}
-               do{
+               do {
                    let decodedResponse = try JSONDecoder().decode(CharacterResponse.self, from: data)
                    DispatchQueue.main.async {
                        self.characters = decodedResponse.results
                        print("Resultado:\(decodedResponse.results[0])")
                    }
-               } catch{
+               } catch {
                    print("Falha ao decodificar o JSON\(error)")
                
                }
-               
-        }
+         }
         task.resume()
     }
     

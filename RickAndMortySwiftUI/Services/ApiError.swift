@@ -12,7 +12,6 @@ enum APIError: Error {
     case invalidStatusCode(Int)
     case decodingFailed
     case networkError(Error)
-    
     var errorDescription: String? {
         switch self {
         case .invalidURL:

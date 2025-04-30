@@ -8,7 +8,7 @@
 import Foundation
 import Combine
 
-class ApiServiceLocation : ObservableObject {
+class ApiServiceLocation: ObservableObject {
     private let baseUrl: String = "https://rickandmortyapi.com/api/location"
     
     @Published var locations: [Location] = []
@@ -19,13 +19,13 @@ class ApiServiceLocation : ObservableObject {
          
         let task = URLSession.shared.dataTask(with: url) { data, response, error in
            if let data = data {
-               do{
+               do {
                    let decodedResponse = try JSONDecoder().decode(LocationResponse.self, from: data)
                    DispatchQueue.main.async {
                        self.locations = decodedResponse.results
                        print("Resultado:\(decodedResponse.results[0])")
                    }
-               } catch{
+               } catch {
                    print("Falha ao decodificar o JSON\(error)")
                
                }
