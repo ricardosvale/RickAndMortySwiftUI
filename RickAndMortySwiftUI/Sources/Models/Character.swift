@@ -17,6 +17,5 @@ struct Character: Codable, Identifiable {
     let location: LocationCharacter
     let image: String
     let episode: [String]
-    
-}
 
+}

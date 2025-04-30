@@ -12,7 +12,7 @@ final class CharacterViewModel: ObservableObject {
     @Published var isLoading: Bool = false
     @Published var errorMessage: String?
     private let service: CharacterServiceProtocol
-    init(service: CharacterServiceProtocol = CharacterRequest()){
+    init(service: CharacterServiceProtocol = CharacterRequest()) {
         self.service = service
     }
     func fetchCharacters() {
@@ -39,11 +39,11 @@ final class CharacterViewModel: ObservableObject {
             }
         }
     }
-    
+
     func fetchCharactersData() {
         Task {
             isLoading = true
-            
+
             do {
                 characters = try await service.fetchCharactesAwait()
             } catch {

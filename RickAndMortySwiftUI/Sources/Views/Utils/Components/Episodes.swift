@@ -8,15 +8,15 @@
 import SwiftUI
 
 struct Episodes: View {
-   
+
     var body: some View {
         HStack {
-            VStack (alignment: .leading) {
+            VStack(alignment: .leading) {
                 Text("Pilot")
                     .font(.jockeyOne(size: 24))
                 Text("December 20, 2013")
                     .font(.kodeMono(.regular, size: 14))
-                    
+
             }
             .padding(.horizontal, 8)
             .padding(.vertical, 15)
@@ -32,11 +32,9 @@ struct Episodes: View {
         .frame(maxWidth: .infinity)
         .padding(.horizontal, 23)
     }
-       
-    
+
 }
 
 #Preview {
     Episodes()
 }
-

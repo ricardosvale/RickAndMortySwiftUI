@@ -9,20 +9,20 @@ import SwiftUI
 
 struct LocationView: View {
     var body: some View {
-        VStack (alignment: .leading) {
+        VStack(alignment: .leading) {
             Text("Locais")
                 .font(.jockeyOne(size: 36))
             Text("Explore o universo")
                 .font(.jost(.regular, size: 20))
         }
         .padding(.leading, -180)
-        VStack{
+        VStack {
             ForEach(0..<5) { _ in
                 CardLocationView()
             }
         }
         .padding()
-        
+
         Spacer()
     }
 }

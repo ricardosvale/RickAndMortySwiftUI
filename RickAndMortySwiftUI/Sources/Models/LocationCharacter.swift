@@ -6,8 +6,7 @@
 //
 import Foundation
 
-struct LocationCharacter : Codable {
+struct LocationCharacter: Codable {
     let name: String
     let url: String
 }
-

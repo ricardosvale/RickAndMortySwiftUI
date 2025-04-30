@@ -9,9 +9,9 @@ import SwiftUI
 
 struct SearchBar: View {
     @State var serch: String = ""
-    
+
     var body: some View {
-        
+
         HStack {
             TextField("", text: $serch, prompt: Text("Busque o personagem")
                 .foregroundStyle(.gray)

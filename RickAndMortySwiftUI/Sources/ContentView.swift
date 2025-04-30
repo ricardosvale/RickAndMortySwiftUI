@@ -9,8 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     @State private var characters: [Character] = []
-    
-    
+
     var body: some View {
         ScrollView {
             VStack(alignment: .leading) {
@@ -25,7 +24,7 @@ struct ContentView: View {
                         } placeholder: {
                             ProgressView() // Placeholder enquanto a imagem carrega
                         }
-                        
+
                         Text(character.name)
                             .font(.headline)
                             .padding(.leading, 10)

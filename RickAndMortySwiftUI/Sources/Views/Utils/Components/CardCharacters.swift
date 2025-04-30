@@ -12,14 +12,14 @@ struct CardCharacters: View {
      var statusColor: Color {
            CharacterStatus(from: character.status).color
        }
-    
+
     var body: some View {
         ZStack(alignment: .center) {
             RoundedRectangle(cornerRadius: 10)
                 .fill(.cardCharacters)
                 .stroke(Color(.colorTerciary), lineWidth: 2)
                 .shadow(color: .black.opacity(0.25), radius: 4, x: 0, y: 2)
-        
+
             VStack(alignment: .center, spacing: 5) {
                 AsyncImage(url: URL(string: character.image)) { phase in
                     switch phase {
@@ -42,13 +42,13 @@ struct CardCharacters: View {
                         EmptyView()
                     }
                 }
-                
+
                 Text(character.name)
                     .font(.jockeyOne(size: 24))
                     .padding(.bottom, -5)
                     .lineLimit(1)
                     .foregroundColor(.colorLabel)
-                
+
                 Text(character.species)
                     .font(.kodeMono(.regular, size: 16))
                     .lineLimit(1)

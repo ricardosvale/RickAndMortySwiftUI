@@ -8,15 +8,15 @@
 import Foundation
 
 final class CharacterRequest: CharacterServiceProtocol {
-    
+
     func fetchCharactesAwait() async throws -> [Character] {
-        
+
         guard let url = URL(string: Endpoint.characters) else {
             throw APIError.invalidURL
         }
-        
+
         do {
-            
+
             let (data, response) = try await URLSession.shared.data(from: url)
             guard let httpResponse = response as? HTTPURLResponse,
                   (200...299).contains(httpResponse.statusCode)
@@ -24,15 +24,14 @@ final class CharacterRequest: CharacterServiceProtocol {
                 let statusCode = (response as? HTTPURLResponse)?.statusCode ?? -1
                 throw APIError.invalidStatusCode(statusCode)
             }
-            
+
             let decoder = JSONDecoder()
             let characterData = try decoder.decode(CharacterResponse.self, from: data)
             return characterData.results
         } catch is DecodingError {
             throw APIError.decodingFailed
-         } catch  {
+         } catch {
             throw APIError.networkError(error)
         }
     }
 }
-

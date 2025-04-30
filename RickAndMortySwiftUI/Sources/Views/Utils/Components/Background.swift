@@ -13,7 +13,7 @@ struct Background: View {
             Image("imgBack")
                 .resizable()
                 .scaledToFill()
-                
+
         }.background(.back)
         .edgesIgnoringSafeArea(.all)
     }

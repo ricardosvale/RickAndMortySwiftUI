@@ -7,12 +7,12 @@
 
 import SwiftUI
 
-enum CharacterStatus{
+enum CharacterStatus {
     case alive
     case dead
     case unknown
-     
-    var color: Color{
+
+    var color: Color {
         switch self {
         case .alive:
             return .colorPrimary
@@ -22,7 +22,7 @@ enum CharacterStatus{
             return .colorUnknown
         }
     }
-    init(from string: String){
+    init(from string: String) {
         switch string.lowercased() {
         case "alive":
             self = .alive

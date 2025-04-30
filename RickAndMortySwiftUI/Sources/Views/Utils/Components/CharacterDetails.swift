@@ -17,7 +17,7 @@ struct CharacterDetails: View {
                 )
                 .frame(maxWidth: .infinity, maxHeight: 343)
                 .padding()
-                
+
             VStack {
                 HStack {
                     Text("Rick Sanchez")
@@ -34,7 +34,7 @@ struct CharacterDetails: View {
                     Text("Espécie")
                         .font(.jost(.medium, size: 20))
                         .foregroundStyle(.colorDetail)
-             
+
                     Text("Human")
                         .font(.jockeyOne(size: 24))
                         .foregroundStyle(.colorLabel)
@@ -58,7 +58,7 @@ struct CharacterDetails: View {
             }
         }
     }
-}   
+}
 
 #Preview {
     CharacterDetails(character: Character.characterMock())

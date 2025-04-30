@@ -10,14 +10,14 @@ import Combine
 
 class ApiServiceLocation: ObservableObject {
     private let baseUrl: String = "https://rickandmortyapi.com/api/location"
-    
+
     @Published var locations: [Location] = []
-    
+
     func getCharacters() {
        // transformando a string em uma URL
         guard let url = URL(string: baseUrl) else { return }
-         
-        let task = URLSession.shared.dataTask(with: url) { data, response, error in
+
+        let task = URLSession.shared.dataTask(with: url) { data, _, error in
            if let data = data {
                do {
                    let decodedResponse = try JSONDecoder().decode(LocationResponse.self, from: data)
@@ -27,11 +27,11 @@ class ApiServiceLocation: ObservableObject {
                    }
                } catch {
                    print("Falha ao decodificar o JSON\(error)")
-               
+
                }
             }
         }
         task.resume()
     }
-    
+
 }

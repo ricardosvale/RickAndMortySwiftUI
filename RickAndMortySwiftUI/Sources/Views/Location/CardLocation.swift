@@ -14,7 +14,7 @@ struct CardLocationView: View {
                 .cornerRadius(10)
                 .clipped()
                 .frame(width: 360, height: 120)
-            VStack (alignment: .leading) {
+            VStack(alignment: .leading) {
                 Text("Name")
                     .font(.instrument(.bold, size: 24))
                     .foregroundStyle(.colorLabel)

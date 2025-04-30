@@ -10,4 +10,3 @@ struct EpisodeResponse: Codable {
     let info: Info
     let results: [Episode]
 }
-
