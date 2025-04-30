@@ -16,12 +16,12 @@ struct SearchBar: View {
             TextField("", text: $serch, prompt: Text("Busque o personagem")
                 .foregroundStyle(.gray)
             )
-            .padding(13)
+            .padding(12)
             .foregroundStyle(.black)
             .background(.colorPrimary)
             .cornerRadius(10)
         }
-        .padding(12)
+        .padding(10)
        }
 }
 

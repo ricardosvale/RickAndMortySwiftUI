@@ -17,12 +17,12 @@ struct CharactersView: View {
     var body: some View {
         ZStack {
             Background()
-            
-            VStack(alignment: .leading) {
+            VStack {
                 SearchBar()
-                    .padding(.top, 30)
-                    .padding(.horizontal)
-              
+                    .padding(.top, 20)
+                    .padding(.horizontal, -5)
+                    .padding(.bottom, -7)
+                
                 if viewModel.isLoading {
                     ProgressView("Carregando...")
                 } else if let errorMessage = viewModel.errorMessage {
@@ -30,17 +30,18 @@ struct CharactersView: View {
                         .foregroundColor(.red)
                 } else {
                     ScrollView {
-                        LazyVGrid(columns: columns){
+                        LazyVGrid(columns: columns, spacing: 12) {
                             ForEach(viewModel.characters) { character in
                                 CardCharacters(character: character)
                             }
                         }
                     }
                 }
-               Spacer()
+                Spacer()
             }
+            .padding(12)
             .onAppear {
-            viewModel.fetchCharactersData()
+                viewModel.fetchCharactersData()
             }
         }
     }
