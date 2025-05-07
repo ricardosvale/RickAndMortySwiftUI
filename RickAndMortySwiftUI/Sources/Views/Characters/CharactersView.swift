@@ -34,7 +34,8 @@ struct CharactersView: View {
                             ForEach(viewModel.characters) { character in
                                 CardCharacters(character: character)
                                     .onAppear {
-                                        if character.id == viewModel.characters.last?.id {
+                                        guard let index =  viewModel.characters.firstIndex(of: character) else { return }
+                                        if index == viewModel.characters.count - 4 {
                                             viewModel.loadMoreCharacters()
                                         }
                                     }
@@ -42,13 +43,10 @@ struct CharactersView: View {
                         }
                     }
                 }
-                Spacer()
             }
-            .padding(12)
-            .onAppear {
-                viewModel.fetchCharactersData()
-            }
+            Spacer()
         }
+        .padding(12)
     }
 }
 

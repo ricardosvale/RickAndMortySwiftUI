@@ -17,28 +17,35 @@ final class CharacterViewModel: ObservableObject {
     private var currentPage = 1
     private var hasMorePages = true
     private var isFetchMore = false
+    
     private let service: CharacterServiceProtocol
+    
     init(service: CharacterServiceProtocol = CharacterRequest()) {
         self.service = service
+        fetchCharactersData()
     }
-  func fetchCharactersData() {
+    func fetchCharactersData() {
+        characters = []
         currentPage = 1
-      hasMorePages = true
-      characters = []
-      loadMoreCharacters()
+        hasMorePages = true
+        loadMoreCharacters()
     }
     
     func loadMoreCharacters () {
-        guard !isLoading && !isFetchMore && hasMorePages else { return }
+        guard !isFetchMore && hasMorePages else { return }
         isFetchMore = true
+        isLoading = currentPage == 1
         Task {
-            isLoading = true
-
+            defer {
+                self.isFetchMore = false
+                self.isLoading = false
+            }
+            
             do {
-               let response = try await service.fetchCharactesAwait(page: currentPage)
+                let response = try await service.fetchCharactesAwait(page: currentPage)
                 characters += response.results
-                currentPage += 1
                 hasMorePages = response.info.next != nil
+                currentPage += 1
             } catch {
                 if let apiError = error as? APIError {
                     errorMessage = apiError.localizedDescription
