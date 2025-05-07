@@ -33,6 +33,11 @@ struct CharactersView: View {
                         LazyVGrid(columns: columns, spacing: 12) {
                             ForEach(viewModel.characters) { character in
                                 CardCharacters(character: character)
+                                    .onAppear {
+                                        if character.id == viewModel.characters.last?.id {
+                                            viewModel.loadMoreCharacters()
+                                        }
+                                    }
                             }
                         }
                     }

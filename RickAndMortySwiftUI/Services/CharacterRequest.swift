@@ -9,12 +9,12 @@ import Foundation
 
 final class CharacterRequest: CharacterServiceProtocol {
 
-    func fetchCharactesAwait() async throws -> [Character] {
+    func fetchCharactesAwait(page: Int) async throws -> CharacterResponse {
 
-        guard let url = URL(string: Endpoint.characters) else {
+        guard let url = URL(string: Endpoint.characters + "?page=\(page)") else {
             throw APIError.invalidURL
         }
-
+print(url)
         do {
 
             let (data, response) = try await URLSession.shared.data(from: url)
@@ -27,7 +27,7 @@ final class CharacterRequest: CharacterServiceProtocol {
 
             let decoder = JSONDecoder()
             let characterData = try decoder.decode(CharacterResponse.self, from: data)
-            return characterData.results
+            return characterData
         } catch is DecodingError {
             throw APIError.decodingFailed
          } catch {

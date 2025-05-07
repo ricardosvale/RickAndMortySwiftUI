@@ -8,5 +8,6 @@
 import Foundation
 
 protocol CharacterServiceProtocol {
-    func fetchCharactesAwait() async throws -> [Character]
+  
+    func fetchCharactesAwait(page: Int) async throws -> CharacterResponse
 }
