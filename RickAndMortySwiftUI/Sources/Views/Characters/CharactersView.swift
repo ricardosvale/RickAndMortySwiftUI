@@ -33,17 +33,20 @@ struct CharactersView: View {
                         LazyVGrid(columns: columns, spacing: 12) {
                             ForEach(viewModel.characters) { character in
                                 CardCharacters(character: character)
+                                    .onAppear {
+                                        guard let index =  viewModel.characters.firstIndex(of: character) else { return }
+                                        if index == viewModel.characters.count - 4 {
+                                            viewModel.loadMoreCharacters()
+                                        }
+                                    }
                             }
                         }
                     }
                 }
-                Spacer()
             }
-            .padding(12)
-            .onAppear {
-                viewModel.fetchCharactersData()
-            }
+            Spacer()
         }
+        .padding(12)
     }
 }
 

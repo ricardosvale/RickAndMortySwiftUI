@@ -13,41 +13,39 @@ final class CharacterViewModel: ObservableObject {
     @Published var characters: [Character] = []
     @Published var isLoading: Bool = false
     @Published var errorMessage: String?
+    
+    private var currentPage = 1
+    private var hasMorePages = true
+    private var isFetchMore = false
+    
     private let service: CharacterServiceProtocol
+    
     init(service: CharacterServiceProtocol = CharacterRequest()) {
         self.service = service
+        fetchCharactersData()
     }
-    func fetchCharacters() {
-        isLoading = true
-        errorMessage = nil
-        ServiceTeste.loadCharacter { [weak self] response in
-            self?.isLoading = false
-            self?.characters = response.results
-        } onError: { [weak self] error in
-            self?.isLoading = false
-            switch error {
-            case .url:
-                self?.errorMessage = "URL inválida."
-            case .noResponse:
-                self?.errorMessage = "Sem resposta do servidor."
-            case .noData:
-                self?.errorMessage = "Nenhum dado foi retornado."
-            case .taskError(let error):
-                self?.errorMessage = "Erro de conexão: \(error.localizedDescription)"
-            case .responseStatusCode(let code):
-                self?.errorMessage = "Erro HTTP: \(code)"
-            case .invalidJSON:
-                self?.errorMessage = "Erro ao decodificar JSON."
-            }
-        }
-    }
-
     func fetchCharactersData() {
+        characters = []
+        currentPage = 1
+        hasMorePages = true
+        loadMoreCharacters()
+    }
+    
+    func loadMoreCharacters () {
+        guard !isFetchMore && hasMorePages else { return }
+        isFetchMore = true
+        isLoading = currentPage == 1
         Task {
-            isLoading = true
-
+            defer {
+                self.isFetchMore = false
+                self.isLoading = false
+            }
+            
             do {
-                characters = try await service.fetchCharactesAwait()
+                let response = try await service.fetchCharactesAwait(page: currentPage)
+                characters += response.results
+                hasMorePages = response.info.next != nil
+                currentPage += 1
             } catch {
                 if let apiError = error as? APIError {
                     errorMessage = apiError.localizedDescription
@@ -55,6 +53,7 @@ final class CharacterViewModel: ObservableObject {
                     errorMessage = "Ocorreu um erro inesperado: \(error.localizedDescription)."
                 }
             }
+            isFetchMore = false
             isLoading = false
         }
     }
