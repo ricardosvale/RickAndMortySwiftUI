@@ -46,6 +46,7 @@ struct CardCharacters: View {
                 Text(character.name)
                     .font(.jockeyOne(size: 24))
                     .padding(.bottom, -5)
+                    .padding(.horizontal, 20)
                     .lineLimit(1)
                     .foregroundColor(.colorLabel)
 
@@ -53,6 +54,7 @@ struct CardCharacters: View {
                     .font(.kodeMono(.regular, size: 16))
                     .lineLimit(1)
                     .foregroundColor(.colorLabel)
+                    .padding(.horizontal, 20)
                 Text(character.status)
                     .font(.kodeMono(.medium, size: 16))
                     .padding(.horizontal, 14)
@@ -68,5 +70,5 @@ struct CardCharacters: View {
 }
 
 #Preview {
-    CharacterDetails(character: Character.characterMock())
+    CardCharacters(character: Character.characterMock())
 }
