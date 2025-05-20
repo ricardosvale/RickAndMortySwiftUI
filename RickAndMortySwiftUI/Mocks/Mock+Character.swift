@@ -11,7 +11,7 @@ extension Character {
     static func characterMock() -> Character {
         Character(id: 1,
                   name: "Rick Sanchez",
-                  status: "Alive",
+                  status: "unknown",
                   species: "Human",
                   gender: "Male",
                   origin: Origin(name: "Earth", url: ""),

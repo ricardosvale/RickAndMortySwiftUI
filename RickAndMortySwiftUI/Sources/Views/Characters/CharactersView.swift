@@ -8,6 +8,8 @@ import SwiftUI
 
 struct CharactersView: View {
     @StateObject private var viewModel = CharacterViewModel()
+    @State private var searchText = ""
+    @FocusState private var isSearchFocused: Bool
     
     let columns: [GridItem] = [
         GridItem(.flexible()),
@@ -15,41 +17,51 @@ struct CharactersView: View {
     ]
     
     var body: some View {
-        ZStack {
-            Background()
-            VStack {
-                SearchBar()
-                    .padding(.top, 20)
-                    .padding(.horizontal, -5)
-                    .padding(.bottom, -7)
+        GeometryReader { geometry in
+            ZStack {
+                Background()
+                    .ignoresSafeArea()
                 
                 if viewModel.isLoading {
                     ProgressView("Carregando...")
+                        .frame(width: geometry.size.width, height: geometry.size.height)
                 } else if let errorMessage = viewModel.errorMessage {
                     Text(errorMessage)
                         .foregroundColor(.red)
+                        .frame(width: geometry.size.width, height: geometry.size.height)
                 } else {
                     ScrollView {
-                        LazyVGrid(columns: columns, spacing: 12) {
-                            ForEach(viewModel.characters) { character in
-                                CardCharacters(character: character)
-                                    .onAppear {
-                                        guard let index =  viewModel.characters.firstIndex(of: character) else { return }
-                                        if index == viewModel.characters.count - 4 {
-                                            viewModel.loadMoreCharacters()
+                        VStack(spacing: 12) {
+                            SearchBar(search: $searchText)
+                                .focused($isSearchFocused)
+                                .padding(.top, 20)
+                                .padding(.horizontal)
+                            
+                            LazyVGrid(columns: columns, spacing: 12) {
+                                ForEach(viewModel.characters) { character in
+                                    CardCharacters(character: character)
+                                        .onAppear {
+                                            guard let index = viewModel.characters.firstIndex(of: character) else { return }
+                                            if index == viewModel.characters.count - 4 {
+                                                viewModel.loadMoreCharacters()
+                                            }
                                         }
-                                    }
+                                }
                             }
+                            .padding(.horizontal)
                         }
+                        .padding(.bottom, 100) // espaço extra pro teclado
+                        .frame(minHeight: geometry.size.height)
                     }
+                    .onTapGesture {
+                        isSearchFocused = false
+                    }
+                    .ignoresSafeArea(.keyboard)
                 }
             }
-            Spacer()
         }
-        .padding(12)
     }
 }
-
 #Preview {
     CharactersView()
 }
