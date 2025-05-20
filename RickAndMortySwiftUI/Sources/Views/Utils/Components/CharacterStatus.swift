@@ -11,7 +11,7 @@ enum CharacterStatus {
     case alive
     case dead
     case unknown
-
+    
     var color: Color {
         switch self {
         case .alive:
@@ -22,6 +22,11 @@ enum CharacterStatus {
             return .colorUnknown
         }
     }
+    
+    var formatted: String {
+        String(describing: self).capitalized
+    }
+    
     init(from string: String) {
         switch string.lowercased() {
         case "alive":
