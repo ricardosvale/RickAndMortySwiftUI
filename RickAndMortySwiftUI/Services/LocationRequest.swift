@@ -9,11 +9,12 @@ import Foundation
 
 final class LocationRequest: LocationServiceProtocol {
     
-    func fetchLocationAwait() async throws -> [Location] {
-        guard let url = URL(string: Endpoint.locations) else {
+    func fetchLocationAwait(page: Int) async throws -> LocationResponse {
+        
+        guard let url = URL(string: Endpoint.locations + "\(page)") else {
             throw APIError.invalidURL
         }
-        
+        print(url)
         do {
             let (data, response) = try await URLSession.shared.data(from: url)
             guard let httpResponse = response as? HTTPURLResponse,
@@ -25,7 +26,7 @@ final class LocationRequest: LocationServiceProtocol {
             
             let decoder = JSONDecoder()
             let locations = try decoder.decode(LocationResponse.self, from: data)
-            return locations.results
+            return locations
             
         } catch is DecodingError {
             throw APIError.decodingFailed

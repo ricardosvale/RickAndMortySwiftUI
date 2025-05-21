@@ -7,6 +7,7 @@
 import SwiftUI
 
 struct CardLocationView: View {
+    var location: Location
     var body: some View {
         ZStack {
             Image("locationImg")
@@ -15,10 +16,10 @@ struct CardLocationView: View {
                 .clipped()
                 .frame(width: 360, height: 120)
             VStack(alignment: .leading) {
-                Text("Name")
+                Text(location.name)
                     .font(.instrument(.bold, size: 24))
                     .foregroundStyle(.colorLabel)
-                Text("Type")
+                Text(location.type)
                     .font(.instrument(.medium, size: 16))
                     .foregroundStyle(.colorLabel)
             }
@@ -26,6 +27,6 @@ struct CardLocationView: View {
         }
     }
 }
-#Preview {
-    CardLocationView()
-}
+//#Preview {
+//    CardLocationView(location: Location.)
+//}

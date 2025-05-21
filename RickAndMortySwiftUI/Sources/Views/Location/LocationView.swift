@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct LocationView: View {
+    @StateObject private var viewModel = LocationViewModel()
+    
     var body: some View {
         VStack(alignment: .leading) {
             Text("Locais")
@@ -16,9 +18,19 @@ struct LocationView: View {
                 .font(.jost(.regular, size: 20))
         }
         .padding(.leading, -180)
+        ScrollView {
         VStack {
-            ForEach(0..<5) { _ in
-                CardLocationView()
+            
+                ForEach(viewModel.location) { location in
+                    CardLocationView(location: location)
+                        .onAppear {
+                            guard let index = viewModel.location.firstIndex(of: location) else { return }
+                            
+                            if index == viewModel.location.count - 4 {
+                                viewModel.loadMoreLocation()
+                            }
+                        }
+                }
             }
         }
         .padding()
