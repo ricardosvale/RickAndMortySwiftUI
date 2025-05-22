@@ -4,7 +4,7 @@
 //
 //  Created by Ricardo Silva Vale on 11/11/24.
 //
-import SwiftUI
+
 import Combine
 
 @MainActor
@@ -24,6 +24,7 @@ final class CharacterViewModel: ObservableObject {
         self.service = service
         fetchCharactersData()
     }
+    
     func fetchCharactersData() {
         characters = []
         currentPage = 1

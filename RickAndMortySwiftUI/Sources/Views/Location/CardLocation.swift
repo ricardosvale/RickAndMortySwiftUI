@@ -9,12 +9,12 @@ import SwiftUI
 struct CardLocationView: View {
     var location: Location
     var body: some View {
-        ZStack {
+        ZStack(alignment: .bottomLeading) {
             Image("locationImg")
-                .resizable()
                 .cornerRadius(10)
                 .clipped()
-                .frame(width: 360, height: 120)
+                .padding(.horizontal, 20)
+            
             VStack(alignment: .leading) {
                 Text(location.name)
                     .font(.instrument(.bold, size: 24))
@@ -23,10 +23,12 @@ struct CardLocationView: View {
                     .font(.instrument(.medium, size: 16))
                     .foregroundStyle(.colorLabel)
             }
-            .padding(.leading, -160)
-        }
+            .padding(.horizontal, 40)
+            .padding(.bottom, 10)
+         }
     }
 }
-//#Preview {
-//    CardLocationView(location: Location.)
-//}
+
+#Preview {
+    CardLocationView(location: Location.locationMock())
+}

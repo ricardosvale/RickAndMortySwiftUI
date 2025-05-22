@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+@MainActor // Qualquer codigo dessa classe sera executado na Main Thread.
+
 final class LocationViewModel: ObservableObject {
     @Published var location: [Location] = []
     @Published var isLoading: Bool = false
@@ -18,9 +20,9 @@ final class LocationViewModel: ObservableObject {
     
     private let service: LocationServiceProtocol
     
-    init(service: LocationServiceProtocol = LocationRequest()){
+    init(service: LocationServiceProtocol = LocationRequest()) {
         self.service = service
-        loadMoreLocation()
+        
     }
     
     func fetchLocation() {
@@ -33,7 +35,7 @@ final class LocationViewModel: ObservableObject {
     func loadMoreLocation () {
         guard !isFetchMore && hasMorePages else { return }
         isFetchMore = true
-        isLoading = currentPage == 1
+        isLoading = (currentPage == 1)
         
         Task {
             defer {
