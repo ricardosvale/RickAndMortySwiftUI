@@ -8,5 +8,5 @@
 import Foundation
 
 protocol LocationServiceProtocol {
-    func fetchLocationAwait() async throws -> [Location]
+    func fetchLocationAwait(page: Int) async throws -> LocationResponse
 }

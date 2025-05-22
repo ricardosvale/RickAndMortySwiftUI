@@ -40,9 +40,10 @@ struct ContentView: View {
         .onAppear {
             ServiceTeste.loadCharacter(onComplete: { characterResponse in
                 self.characters = characterResponse.results
-            }) { error in
+            }, onError: { error in
                 print("Error loading characters: \(error)")
             }
+        )
         }
     }
 }

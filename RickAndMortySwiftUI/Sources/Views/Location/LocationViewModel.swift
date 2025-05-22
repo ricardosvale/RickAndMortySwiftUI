@@ -1,16 +1,16 @@
 //
-//  CharactersViewModel.swift
+//  LocationViewModel.swift
 //  RickAndMortySwiftUI
 //
-//  Created by Ricardo Silva Vale on 11/11/24.
+//  Created by Ricardo on 21/05/25.
 //
 
-import Combine
+import SwiftUI
 
-@MainActor
+@MainActor // Qualquer codigo dessa classe sera executado na Main Thread.
 
-final class CharacterViewModel: ObservableObject {
-    @Published var characters: [Character] = []
+final class LocationViewModel: ObservableObject {
+    @Published var location: [Location] = []
     @Published var isLoading: Bool = false
     @Published var errorMessage: String?
     
@@ -18,24 +18,25 @@ final class CharacterViewModel: ObservableObject {
     private var hasMorePages = true
     private var isFetchMore = false
     
-    private let service: CharacterServiceProtocol
+    private let service: LocationServiceProtocol
     
-    init(service: CharacterServiceProtocol = CharacterRequest()) {
+    init(service: LocationServiceProtocol = LocationRequest()) {
         self.service = service
-        fetchCharactersData()
+        
     }
     
-    func fetchCharactersData() {
-        characters = []
+    func fetchLocation() {
+        location = []
         currentPage = 1
         hasMorePages = true
-        loadMoreCharacters()
+        loadMoreLocation()
     }
     
-    func loadMoreCharacters () {
+    func loadMoreLocation () {
         guard !isFetchMore && hasMorePages else { return }
         isFetchMore = true
         isLoading = (currentPage == 1)
+        
         Task {
             defer {
                 self.isFetchMore = false
@@ -43,17 +44,18 @@ final class CharacterViewModel: ObservableObject {
             }
             
             do {
-                let response = try await service.fetchCharactesAwait(page: currentPage)
-                characters += response.results
+                let response = try await service.fetchLocationAwait(page: currentPage)
+                location.append(contentsOf: response.results)
                 hasMorePages = response.info.next != nil
                 currentPage += 1
             } catch {
                 if let apiError = error as? APIError {
                     errorMessage = apiError.localizedDescription
                 } else {
-                    errorMessage = "Ocorreu um erro inesperado: \(error.localizedDescription)."
+                    errorMessage = "Ocorreu um erro inesperado: \(error.localizedDescription)"
                 }
             }
         }
     }
+    
 }

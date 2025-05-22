@@ -11,7 +11,7 @@ final class CharacterRequest: CharacterServiceProtocol {
 
     func fetchCharactesAwait(page: Int) async throws -> CharacterResponse {
 
-        guard let url = URL(string: Endpoint.characters + "?page=\(page)") else {
+        guard let url = URL(string: Endpoint.characters + "\(page)") else {
             throw APIError.invalidURL
         }
 print(url)
