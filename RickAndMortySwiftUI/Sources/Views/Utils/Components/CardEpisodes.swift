@@ -7,34 +7,34 @@
 
 import SwiftUI
 
-struct Episodes: View {
-
+struct CardEpisodes: View {
+    var episode: Episode
     var body: some View {
         HStack {
             VStack(alignment: .leading) {
-                Text("Pilot")
+                Text(episode.name)
                     .font(.jockeyOne(size: 24))
-                Text("December 20, 2013")
+                Text(episode.airDate)
                     .font(.kodeMono(.regular, size: 14))
 
             }
             .padding(.horizontal, 8)
             .padding(.vertical, 15)
             Spacer()
-            Text("S01E01")
+            Text(episode.episode)
                 .font(.kodeMono(.regular, size: 14))
                 .padding(.vertical, -15)
-                .padding(.horizontal, 8)
+                .padding(.horizontal, 12)
         }
         .foregroundStyle(.white)
         .background(.episodes)
         .cornerRadius(5)
         .frame(maxWidth: .infinity)
-        .padding(.horizontal, 23)
+        .padding(.horizontal, 23)     
     }
 
 }
 
 #Preview {
-    Episodes()
+    CardEpisodes(episode: Episode.episodemock())
 }

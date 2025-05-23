@@ -15,7 +15,7 @@ extension Location {
             type: "Planet",
             dimension: "Unknown",
             residents: [],
-            url:"https://rickandmortyapi.com/api/location/1"
+            url: "https://rickandmortyapi.com/api/location/1"
         )
     }
 }
