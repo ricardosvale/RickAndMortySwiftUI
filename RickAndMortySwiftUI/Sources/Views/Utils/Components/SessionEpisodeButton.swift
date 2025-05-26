@@ -9,6 +9,7 @@ import SwiftUI
 
 struct SessionEpisodeButton: View {
     let session: EpisodeSession
+    let isSelected: Bool
     let action: () -> Void
     
     var body: some View {
@@ -18,12 +19,12 @@ struct SessionEpisodeButton: View {
                 .padding(.vertical, 2)
                 .font(.jost(.bold, size: 14))
                 .foregroundStyle(.black)
-                .background(.colorPrimary)
+                .background(isSelected ? .colorPrimary : .colorGray)
                 .cornerRadius(10)
         }
     }
 }
 
 #Preview {
-    SessionEpisodeButton(session: EpisodeSession.session1, action: {print("click") })
+    SessionEpisodeButton(session: EpisodeSession.session1, isSelected: false, action: {print("click") })
 }
