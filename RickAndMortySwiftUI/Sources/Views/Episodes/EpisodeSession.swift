@@ -31,25 +31,3 @@ enum EpisodeSession: String, CaseIterable, Identifiable {
         }
     }
 }
-
-struct SessionEpisodeButton: View {
-    var body: some View {
-        LazyVStack(spacing: 16) {
-            ForEach(EpisodeSession.allCases) { session in
-                Text(session.displayName)
-                    .font(.system(size: 18, weight: .bold))
-                    .foregroundColor(.primary)
-                    .frame(maxWidth: .infinity, minHeight: 50)
-                    .background(
-                        Color.green
-                    )
-                    .clipShape(Capsule())
-                    .padding(.horizontal, 5)
-            }
-        }
-    }
-}
-
-#Preview {
-    SessionEpisodeButton()
-}
