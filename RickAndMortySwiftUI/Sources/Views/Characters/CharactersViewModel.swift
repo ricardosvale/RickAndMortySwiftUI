@@ -5,10 +5,9 @@
 //  Created by Ricardo Silva Vale on 11/11/24.
 //
 
-import Combine
+import Foundation
 
 @MainActor
-
 final class CharacterViewModel: ObservableObject {
     @Published var characters: [Character] = []
     @Published var isLoading: Bool = false

@@ -5,29 +5,22 @@
 //  Created by Ricardo on 25/05/25.
 //
 
-import SwiftUI
+import Foundation
 
-enum EpisodeSession: String, CaseIterable, Identifiable {
+struct EpisodeSession: Identifiable, Hashable {
     
-    case session1 = "S01"
-    case session2 = "S02"
-    case session3 = "S03"
-    case session4 = "S04"
-    case session5 = "S05"
-    case session6 = "S06"
-    case session7 = "S07"
+    let rawValue: String // Ex: "S01"
     
-    var id: String {self.rawValue}
+    var id: String { rawValue }
     
     var displayName: String {
-        switch self {
-        case .session1: return "Session 1"
-        case .session2: return "Session 2"
-        case .session3: return "Session 3"
-        case .session4: return "Session 4"
-        case .session5: return "Session 5"
-        case .session6: return "Session 6"
-        case .session7: return "Session 7"
+        if rawValue.starts(with: "S") {
+            let seasonNumberSubstring = rawValue.dropFirst()
+            
+            if let seasonNumber = Int(String(seasonNumberSubstring)) {
+                return "Season \(seasonNumber)"
+            }
         }
+        return rawValue
     }
 }

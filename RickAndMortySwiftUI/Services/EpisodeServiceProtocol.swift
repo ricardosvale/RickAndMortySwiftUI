@@ -8,5 +8,5 @@
 import Foundation
 
 protocol EpisodeServiceProtocol {
-   static func fetchEpisodes() async throws -> EpisodeResponse
+    func fetchEpisodes() async throws -> EpisodeResponse
 }

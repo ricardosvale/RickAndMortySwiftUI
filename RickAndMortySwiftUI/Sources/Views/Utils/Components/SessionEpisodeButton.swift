@@ -8,15 +8,15 @@
 import SwiftUI
 
 struct SessionEpisodeButton: View {
-    let session: EpisodeSession
+    let title: String
     let isSelected: Bool
     let action: () -> Void
     
     var body: some View {
         Button(action: action) {
-            Text(session.displayName)
-                .padding(.horizontal, 10)
-                .padding(.vertical, 2)
+            Text(title)
+                .padding(.horizontal, 12)
+                .padding(.vertical, 4)
                 .font(.jost(.bold, size: 14))
                 .foregroundStyle(.black)
                 .background(isSelected ? .colorPrimary : .colorGray)
@@ -26,5 +26,5 @@ struct SessionEpisodeButton: View {
 }
 
 #Preview {
-    SessionEpisodeButton(session: EpisodeSession.session1, isSelected: false, action: {print("click") })
+    SessionEpisodeButton(title: "Session 1", isSelected: true, action: {print("click") })
 }
