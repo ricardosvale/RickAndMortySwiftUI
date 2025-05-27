@@ -18,13 +18,13 @@ struct CardEpisodes: View {
                     .font(.kodeMono(.regular, size: 14))
 
             }
-            .padding(.horizontal, 8)
+            .padding(.horizontal, 15)
             .padding(.vertical, 15)
             Spacer()
             Text(episode.episode)
                 .font(.kodeMono(.regular, size: 14))
                 .padding(.vertical, -15)
-                .padding(.horizontal, 12)
+                .padding(.horizontal, 15)
         }
         .foregroundStyle(.white)
         .background(.episodes)
