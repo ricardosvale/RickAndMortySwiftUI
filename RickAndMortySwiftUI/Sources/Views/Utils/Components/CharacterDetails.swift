@@ -17,6 +17,7 @@ struct CharacterDetails: View {
                 )
                 .frame(maxWidth: .infinity, maxHeight: 343)
                 .padding(.horizontal)
+                .shadow(color: .primary.opacity(0.3), radius: 8, x: 0, y: 5)
 
             VStack(alignment: .leading) {
                 HStack {
@@ -24,8 +25,9 @@ struct CharacterDetails: View {
                         .font(.jockeyOne(size: 32))
                         .foregroundStyle(.colorLabel)
                         .padding(.trailing, 70)
-                    Text(character.status)
+                    Text(CharacterStatus(from: character.status).formatted)
                     .font(.kodeMono(.medium, size: 16))
+                    .foregroundStyle(.black)
                     .padding(.horizontal, 12)
                     .padding(.vertical, 5)
                     .background(
