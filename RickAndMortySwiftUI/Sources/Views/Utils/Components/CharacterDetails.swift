@@ -21,11 +21,12 @@ struct CharacterDetails: View {
                 .shadow(color: .primary.opacity(0.3), radius: 8, x: 0, y: 5)
             
             VStack(alignment: .leading) {
-                HStack {
+                HStack(alignment: .top, spacing: 10) {
                     Text(character.name)
                         .font(.jockeyOne(size: 32))
                         .foregroundStyle(.colorLabel)
                         .lineLimit(1)
+                        .truncationMode(.tail)
                         .layoutPriority(1)
                     
                     Spacer()
@@ -39,6 +40,7 @@ struct CharacterDetails: View {
                             RoundedRectangle(cornerRadius: 5)
                                 .fill(CharacterStatus(from: character.status).color)
                         )
+                        .fixedSize()
                 }
                 .padding(.horizontal, 35)
                 
