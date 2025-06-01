@@ -27,6 +27,7 @@ struct DetailsLocal: View {
                 .font(.jost(.medium, size: 24))
                 .padding(.leading, 22)
         }
+        ListCharacterHView(title: "Residentes", images: location.residents)
     }
 }
 
