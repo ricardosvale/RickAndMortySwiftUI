@@ -57,9 +57,7 @@ struct ListCharacterHView: View {
         }
     }
   
-    
-
-}
+ }
 
 #Preview {
     ListCharacterHView(title: "Residente", images: Location.locationMock().residents)

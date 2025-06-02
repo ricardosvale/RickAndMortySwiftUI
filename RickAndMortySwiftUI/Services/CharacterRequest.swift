@@ -34,4 +34,26 @@ print(url)
             throw APIError.networkError(error)
         }
     }
+    
+    func fetchGeneric<T: Decodable>(url: String) async throws -> T {
+         guard let url = URL(string: url) else {
+             throw APIError.invalidURL
+         }
+
+         let (data, response) = try await URLSession.shared.data(from: url)
+
+         guard let httpResponse = response as? HTTPURLResponse,
+               (200...299).contains(httpResponse.statusCode)
+         else {
+             let statusCode = (response as? HTTPURLResponse)?.statusCode ?? -1
+             throw APIError.invalidStatusCode(statusCode)
+         }
+
+         do {
+             let decoded = try JSONDecoder().decode(T.self, from: data)
+             return decoded
+         } catch {
+             throw APIError.decodingFailed
+         }
+     }
 }

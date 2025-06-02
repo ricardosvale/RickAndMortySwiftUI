@@ -29,7 +29,7 @@ struct LocationView: View {
                     ScrollView {
                         LazyVStack {
                             ForEach(viewModel.location) { location in
-                                NavigationLink(destination: DetailsLocal(location: location) ) {
+                                NavigationLink(destination: LocationDetails(location: location) ) {
                                     CardLocationView(location: location)
                                 }
                                     .onAppear {
