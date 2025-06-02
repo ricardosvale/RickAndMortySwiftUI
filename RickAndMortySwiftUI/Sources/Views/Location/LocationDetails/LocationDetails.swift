@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct DetailsLocal: View {
+struct LocationDetails: View {
     let location: Location
     
     var body: some View {
@@ -32,5 +32,5 @@ struct DetailsLocal: View {
 }
 
 #Preview {
-    DetailsLocal(location: Location.locationMock())
+    LocationDetails(location: Location.locationMock())
 }
