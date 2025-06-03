@@ -35,7 +35,7 @@ final class CharacterRequest: CharacterServiceProtocol {
         }
     }
     
-    func fetchCharacter(url: String) async throws ->  Character {
+    func fetchCharacter(url: String) async throws -> Character {
         guard let url = URL(string: url) else {
             throw APIError.invalidURL
         }

@@ -20,18 +20,17 @@ struct ImageView: View {
                     image
                         .resizable()
                         .aspectRatio(contentMode: .fit)
-                        .clipShape(RoundedRectangle(cornerRadius: 15))
-                        .padding(.horizontal, 45)
+                        .clipShape(RoundedRectangle(cornerRadius: 12))
                 case .failure:
                     Image("Noimage")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
-                        .clipShape(RoundedRectangle(cornerRadius: 15))
+                        .clipShape(RoundedRectangle(cornerRadius: 12))
                         .padding(.horizontal, 45)
                 @unknown default:
                     EmptyView()
                 }
-            }
+            }.accessibilityLabel(Text("Imagem de \(character.name)"))
         }
     }
 }

@@ -47,7 +47,9 @@ struct LocationView: View {
                 .task {
                     viewModel.loadMoreLocation()
                 }
-            }
+            }.navigationTitle("Voltar")
+                .navigationBarTitleDisplayMode(.inline)
+                .tint(.black)
         }
     }
 }
