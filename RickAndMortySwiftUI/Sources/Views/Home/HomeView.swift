@@ -11,7 +11,7 @@ struct HomeView: View {
 
     var body: some View {
         ZStack {
-            Background()
+            Background(color: .back)
             VStack(alignment: .center) {
                 Text("Wubba lubba dub dub!")
                     .font(.jockeyOne(size: 42))

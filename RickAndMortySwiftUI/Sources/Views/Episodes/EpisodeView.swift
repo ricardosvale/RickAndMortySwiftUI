@@ -15,7 +15,7 @@ struct EpisodeView: View {
     var body: some View {
         
         ZStack {
-            Background()
+            Background(color: .back)
                 .ignoresSafeArea()
             
             VStack(alignment: .leading) {

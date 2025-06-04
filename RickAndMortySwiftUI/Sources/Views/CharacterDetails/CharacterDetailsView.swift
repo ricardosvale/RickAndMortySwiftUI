@@ -11,9 +11,8 @@ struct CharacterDetailsView: View {
     var character: Character
     var body: some View {
         ZStack {
-            Background()
+            Background(color: .characterPage)
                 .ignoresSafeArea()
-            
             VStack(alignment: .leading) {
                 Text("CHARACTER")
                     .font(.jockeyOne(size: 32))
@@ -21,6 +20,7 @@ struct CharacterDetailsView: View {
                     .padding(.bottom, 5)
                 
                 ImageView(character: character)
+                    .padding(.horizontal, 45)
                 
                 CharacterDetails(character: character)
                     .offset(y: -20)

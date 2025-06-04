@@ -23,14 +23,17 @@ struct LocationDetails: View {
                     .foregroundStyle(.colorOrange)
                     .font(.jockeyOne(size: 52))
                     .padding(.leading, 22)
+                
                 Spacer()
+                
                 Text(viewModel.location.type)
                     .font(.jockeyOne(size: 32))
+                    .foregroundStyle(.colorLabel)
                     .padding(.trailing, 28 )
-                
             }
             Text(viewModel.location.dimension)
                 .font(.jost(.medium, size: 24))
+                .foregroundStyle(.colorLabel)
                 .padding(.leading, 22)
             
             HorizontalCharacterListView(title: "Residentes", characters: viewModel.characters)

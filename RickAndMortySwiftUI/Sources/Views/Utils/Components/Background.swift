@@ -8,17 +8,17 @@
 import SwiftUI
 
 struct Background: View {
+    let color: Color
     var body: some View {
         ZStack {
             Image("imgBack")
                 .resizable()
                 .scaledToFill()
-
-        }.background(.back)
+        }.background(color)
         .edgesIgnoringSafeArea(.all)
     }
 }
 
 #Preview {
-    Background()
+    Background(color: .back)
 }

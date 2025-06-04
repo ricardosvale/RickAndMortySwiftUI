@@ -21,7 +21,7 @@ struct DetailRow: View {
             
             Text(value)
                 .font(.jost(.medium, size: 24))
-                .foregroundStyle(.colorLabel)
+                .foregroundStyle(.white)
                 .multilineTextAlignment(.trailing)
                 .lineLimit(1)
                 .truncationMode(.tail)

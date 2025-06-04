@@ -24,7 +24,7 @@ struct CharacterDetails: View {
                 HStack(alignment: .top, spacing: 10) {
                     Text(character.name)
                         .font(.jockeyOne(size: 32))
-                        .foregroundStyle(.colorLabel)
+                        .foregroundStyle(.white)
                         .lineLimit(1)
                         .truncationMode(.tail)
                         .layoutPriority(1)

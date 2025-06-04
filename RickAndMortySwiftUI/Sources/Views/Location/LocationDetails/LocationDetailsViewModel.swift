@@ -28,15 +28,14 @@ final class LocationDetailsViewModel: ObservableObject {
                 group.addTask { [self] in
                     do {
                         return try await service.fetchCharacter(url: characterUrl)
-                       
+                        
                     } catch {
                         print("Erro ao buscar personagem: \(error)")
                         return nil
                     }
                 }
-                
             }
-           
+            
             for await character in group {
                 if let character = character {
                     loadedCharacters.append(character)
@@ -45,5 +44,5 @@ final class LocationDetailsViewModel: ObservableObject {
         }
         characters = loadedCharacters
         logger.info("Carregados \(self.characters.count) personagens.")
-     }
+    }
 }

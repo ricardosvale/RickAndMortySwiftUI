@@ -12,7 +12,7 @@ struct LocationView: View {
     
     var body: some View {
         ZStack {
-            Background()
+            Background(color: .back)
                 .ignoresSafeArea()
             
             NavigationStack {
@@ -47,9 +47,7 @@ struct LocationView: View {
                 .task {
                     viewModel.loadMoreLocation()
                 }
-            }.navigationTitle("Voltar")
-                .navigationBarTitleDisplayMode(.inline)
-                .tint(.black)
+            }.tint(.blue)
         }
     }
 }

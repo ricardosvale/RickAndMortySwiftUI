@@ -18,10 +18,10 @@ struct CardLocationView: View {
             VStack(alignment: .leading) {
                 Text(location.name)
                     .font(.instrument(.bold, size: 24))
-                    .foregroundStyle(.colorLabel)
+                    .foregroundStyle(.white)
                 Text(location.type)
                     .font(.instrument(.medium, size: 16))
-                    .foregroundStyle(.colorLabel)
+                    .foregroundStyle(.white)
             }
             .padding(.horizontal, 40)
             .padding(.bottom, 10)

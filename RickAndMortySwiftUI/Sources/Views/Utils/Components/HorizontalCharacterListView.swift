@@ -21,9 +21,8 @@ struct HorizontalCharacterListView: View {
                 LazyHStack(spacing: 10) {
                     ForEach(characters) { character in
                         ImageView(character: character)
-                            .frame(width: 80, height: 80)
-                        
-                    }
+//                            .frame(width: 80, height: 80)
+                     }
                 }
            }
             .frame(height: 80)

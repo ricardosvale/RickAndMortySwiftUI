@@ -15,7 +15,7 @@ struct ImageView: View {
                 switch phase {
                 case .empty:
                     ProgressView("Carregando imagem...")
-                        .padding(.horizontal, 45)
+                        .padding()
                 case .success(let image):
                     image
                         .resizable()
@@ -26,7 +26,6 @@ struct ImageView: View {
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .clipShape(RoundedRectangle(cornerRadius: 12))
-                        .padding(.horizontal, 45)
                 @unknown default:
                     EmptyView()
                 }
