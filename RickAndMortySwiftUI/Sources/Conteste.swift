@@ -28,7 +28,7 @@ import SwiftUI
                     }
                 }
                 .onAppear {
-                    viewModel.fetchCharacters()
+                    viewModel.fetchCharactersData()
                 }
             }
         }

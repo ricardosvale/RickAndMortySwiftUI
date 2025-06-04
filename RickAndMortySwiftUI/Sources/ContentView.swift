@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     @State private var characters: [Character] = []
-    
+
     var body: some View {
         ScrollView {
             VStack(alignment: .leading) {
@@ -24,7 +24,7 @@ struct ContentView: View {
                         } placeholder: {
                             ProgressView() // Placeholder enquanto a imagem carrega
                         }
-                        
+
                         Text(character.name)
                             .font(.headline)
                             .padding(.leading, 10)
@@ -40,9 +40,10 @@ struct ContentView: View {
         .onAppear {
             ServiceTeste.loadCharacter(onComplete: { characterResponse in
                 self.characters = characterResponse.results
-            }) { error in
+            }, onError: { error in
                 print("Error loading characters: \(error)")
             }
+        )
         }
     }
 }

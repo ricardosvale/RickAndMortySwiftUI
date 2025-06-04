@@ -19,5 +19,4 @@ extension Character {
                   image: "https://rickandmortyapi.com/api/character/avatar/1.jpeg",
                   episode: ["https://rickandmortyapi.com/api/episode/1", "https://rickandmortyapi.com/api/episode/2"])
     }
-   
 }

@@ -8,31 +8,47 @@
 import SwiftUI
 
 struct LocationView: View {
+    @StateObject private var viewModel = LocationViewModel()
+    
     var body: some View {
-        Text("Locais")
-            .font(.jockeyOne(size: 36))
-        Text("Explore o universo")
-            .font(.jost(.regular, size: 20))
-        
         ZStack {
-            Image("locationImg")
-                .resizable()
-                .cornerRadius(10)
-                .clipped()
-                .frame(width: 360, height: 120)
-           
+            Background(color: .back)
+                .ignoresSafeArea()
             
-            VStack (alignment: .leading) {
-                Text("Name")
-                    .font(.instrument(.bold, size: 24))
-                    .foregroundStyle(.colorLabel)
-                Text("Type")
-                    .font(.instrument(.medium, size: 16))
-                    .foregroundStyle(.colorLabel)
-            }
-            .padding(.leading, -160)
-         }
-        .padding()
+            NavigationStack {
+                VStack(alignment: .leading, spacing: 18) {
+                    VStack(alignment: .leading) {
+                        Text("Locais")
+                            .font(.jockeyOne(size: 36))
+                        Text("Explore o universo")
+                            .font(.jost(.regular, size: 20))
+                    }
+                    .padding(.horizontal, 28)
+                    .padding(.top, 50)
+                    
+                    ScrollView {
+                        LazyVStack {
+                            ForEach(viewModel.location) { location in
+                                NavigationLink(destination: LocationDetails(location: location) ) {
+                                    CardLocationView(location: location)
+                                }
+                                    .onAppear {
+                                        guard let index = viewModel.location.firstIndex(of: location) else { return }
+                                        
+                                        if index == viewModel.location.count - 4 {
+                                            viewModel.loadMoreLocation()
+                                        }
+                                    }
+                            }
+                        }
+                    }
+                    .padding(.bottom, 50)
+                }
+                .task {
+                    viewModel.loadMoreLocation()
+                }
+            }.tint(.blue)
+        }
     }
 }
 

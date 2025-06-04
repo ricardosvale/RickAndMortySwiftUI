@@ -12,7 +12,6 @@ extension Font {
         case regular
         case bold
         case medium
-        
         var fontName: String {
             switch self {
             case .regular:
@@ -27,21 +26,18 @@ extension Font {
     enum Instrument {
         case bold
         case medium
-        
         var fontName: String {
             switch self {
-           case .bold:
+            case .bold:
                 return "InstrumentSans-Bold"
             case .medium:
                 return "InstrumentSans-Medium"
             }
         }
     }
-    
     enum KodeMono {
         case regular
         case medium
-        
         var fontName: String {
             switch self {
             case .regular:
@@ -54,11 +50,9 @@ extension Font {
     static func jockeyOne( size: CGFloat) -> Font {
         return Font.custom("JockeyOne-Regular", size: size)
     }
-    
     static func jost(_ type: Jost, size: CGFloat) -> Font {
         return Font.custom(type.fontName, size: size)
     }
-    
     static func kodeMono(_ type: KodeMono, size: CGFloat) -> Font {
         return Font.custom(type.fontName, size: size)
     }

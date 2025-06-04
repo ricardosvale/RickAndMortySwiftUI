@@ -6,7 +6,7 @@
 //
 import Foundation
 
-struct Character: Codable, Identifiable {
+struct Character: Codable, Identifiable, Equatable {
 
     let id: Int
     let name: String
@@ -17,6 +17,5 @@ struct Character: Codable, Identifiable {
     let location: LocationCharacter
     let image: String
     let episode: [String]
-    
-}
 
+}
