@@ -19,7 +19,7 @@ struct CharactersView: View {
     var body: some View {
         GeometryReader { geometry in
             ZStack {
-                Background()
+                Background(color: .back)
                     .ignoresSafeArea()
                 NavigationStack {
                     if viewModel.isLoading {

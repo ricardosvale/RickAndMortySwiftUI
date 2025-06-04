@@ -15,23 +15,21 @@ struct ImageView: View {
                 switch phase {
                 case .empty:
                     ProgressView("Carregando imagem...")
-                        .padding(.horizontal, 45)
+                        .padding()
                 case .success(let image):
                     image
                         .resizable()
                         .aspectRatio(contentMode: .fit)
-                        .clipShape(RoundedRectangle(cornerRadius: 15))
-                        .padding(.horizontal, 45)
+                        .clipShape(RoundedRectangle(cornerRadius: 12))
                 case .failure:
                     Image("Noimage")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
-                        .clipShape(RoundedRectangle(cornerRadius: 15))
-                        .padding(.horizontal, 45)
+                        .clipShape(RoundedRectangle(cornerRadius: 12))
                 @unknown default:
                     EmptyView()
                 }
-            }
+            }.accessibilityLabel(Text("Imagem de \(character.name)"))
         }
     }
 }
