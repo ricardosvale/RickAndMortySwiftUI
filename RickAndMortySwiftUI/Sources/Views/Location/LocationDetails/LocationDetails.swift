@@ -27,7 +27,7 @@ struct LocationDetails: View {
                 .frame(height: 360)
                 .clipShape(RoundedCorner(radius: 30, corners: [.bottomLeft, .bottomRight]))
                 .ignoresSafeArea(edges: .top)
-                .shadow(color:.primary.opacity(0.3), radius: 20, x: 0, y: 4)
+                .shadow(color: .primary.opacity(0.3), radius: 20, x: 0, y: 4)
             
             VStack(alignment: .leading) {
                 Spacer()
