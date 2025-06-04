@@ -18,18 +18,20 @@ struct LocationDetails: View {
     
     var body: some View {
  //MARK: Ajustar com GeometryReader
-        
-        ZStack(alignment: .top) {
+                ZStack(alignment: .top) {
+                    Background(color: .back)
+                        .ignoresSafeArea()
             Image("detailsLocationImg")
                 .resizable()
                 .aspectRatio(contentMode: .fill)
                 .frame(height: 360)
                 .clipShape(RoundedCorner(radius: 30, corners: [.bottomLeft, .bottomRight]))
                 .ignoresSafeArea(edges: .top)
+                .shadow(color: .primary.opacity(0.3), radius: 20, x: 0, y: 4)
             
             VStack(alignment: .leading) {
                 Spacer()
-                    .frame(height: 320)
+                    .frame(height: 360)
                 
                 HStack {
                     Text(viewModel.location.name)
