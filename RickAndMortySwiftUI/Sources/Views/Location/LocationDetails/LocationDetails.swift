@@ -17,6 +17,7 @@ struct LocationDetails: View {
     }
     
     var body: some View {
+ //MARK: Ajustar com GeometryReader
         
         ZStack(alignment: .top) {
             Image("detailsLocationImg")
