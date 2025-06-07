@@ -17,6 +17,7 @@ struct DetailRow: View {
                 .font(.jost(.medium, size: 20))
                 .foregroundStyle(.colorDetail)
                 .frame(width: 130, alignment: .leading)
+            
             Spacer()
             
             Text(value)
@@ -25,8 +26,7 @@ struct DetailRow: View {
                 .multilineTextAlignment(.trailing)
                 .lineLimit(1)
                 .truncationMode(.tail)
-                
-        }
+         }
         .padding(.horizontal, 35)
     }
     
