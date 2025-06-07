@@ -8,7 +8,9 @@
 import SwiftUI
 
 struct EpisodesDetailsView: View {
+    let characters: [Character]
     var body: some View {
+       
         VStack(alignment: .leading) {
            
             HStack {
@@ -38,11 +40,12 @@ struct EpisodesDetailsView: View {
                 .padding(.trailing, 28)
                 .padding(.bottom, 25)
             }
-            Spacer()
+           
+            HorizontalCharacterListView(title: "Aparições", characters: characters)
         }
     }
 }
 
 #Preview {
-    EpisodesDetailsView()
+    EpisodesDetailsView(characters: Character.characterMock1())
 }
