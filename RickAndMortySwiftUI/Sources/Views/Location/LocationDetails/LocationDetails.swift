@@ -17,7 +17,7 @@ struct LocationDetails: View {
     }
     
     var body: some View {
- //MARK: Ajustar com GeometryReader
+ // MARK: Ajustar com GeometryReader
                 ZStack(alignment: .top) {
                     Background(color: .back)
                         .ignoresSafeArea()
@@ -38,6 +38,9 @@ struct LocationDetails: View {
                         .foregroundStyle(.colorOrange)
                         .font(.jockeyOne(size: 52))
                         .padding(.leading, 22)
+                        .padding(.trailing, 10)
+                        .multilineTextAlignment(.leading)
+                        .lineLimit(2)
                     
                     Spacer()
                     
@@ -60,20 +63,6 @@ struct LocationDetails: View {
         }
         .task {
             await viewModel.fetchCharacters(url: viewModel.location.residents)
-        }
-    }
-    
-    struct RoundedCorner: Shape {
-        var radius: CGFloat = .infinity
-        var corners: UIRectCorner = .allCorners
-        
-        func path(in rect: CGRect) -> Path {
-            let path = UIBezierPath(
-                roundedRect: rect,
-                byRoundingCorners: corners,
-                cornerRadii: CGSize(width: radius, height: radius)
-            )
-            return Path(path.cgPath)
         }
     }
 }
