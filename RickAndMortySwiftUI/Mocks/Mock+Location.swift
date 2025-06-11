@@ -11,7 +11,7 @@ extension Location {
     static func locationMock() -> Location {
         Location(
             id: 1,
-            name: "Earth",
+            name: "Interdimensional Cable",
             type: "Planet",
             dimension: "Dimension C-137",
             residents: ["https://rickandmortyapi.com/api/character/38",
