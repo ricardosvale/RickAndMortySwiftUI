@@ -6,7 +6,7 @@
 //
 import Foundation
 
-struct LocationCharacter: Codable, Equatable {
+struct LocationCharacter: Codable, Equatable, Hashable {
     let name: String
     let url: String
 }
