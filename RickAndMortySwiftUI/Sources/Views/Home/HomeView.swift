@@ -9,7 +9,6 @@ import SwiftUI
 
 struct HomeView: View {
     @EnvironmentObject var router: Router
-    @StateObject private var characterViewModel = CharacterViewModel()
     var body: some View {
         ZStack {
             Background(color: .back)
@@ -33,7 +32,7 @@ struct HomeView: View {
                     }
                 Spacer()
             }
-           .navigationDestination(for: Route.self) { route in
+            .navigationDestination(for: Route.self) { route in
                 switch route {
                 case .characters:
                     CharactersView()
