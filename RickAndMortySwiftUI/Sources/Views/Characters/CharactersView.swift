@@ -39,9 +39,7 @@ struct CharactersView: View {
                             
                             LazyVGrid(columns: columns, spacing: 12) {
                                 ForEach(viewModel.characters) { character in
-                                    NavigationLink(destination: CharacterDetailsView(character: character)) {
-                                        CardCharacters(character: character)
-                                    }
+                               CardCharacters(character: character)
                                     .buttonStyle(PlainButtonStyle())
                                     .foregroundStyle(.primary)
                                     .onAppear {
