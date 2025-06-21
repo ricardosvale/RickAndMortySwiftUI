@@ -11,7 +11,7 @@ final class Router: ObservableObject {
     
     @Published var path = NavigationPath()
   
-    func push(_ route: Route){
+    func push(_ route: Route) {
         path.append(route)
     }
     
@@ -21,7 +21,7 @@ final class Router: ObservableObject {
         }
     }
     
-    func popToRoot(){
+    func popToRoot() {
         path = NavigationPath()
     }
 }

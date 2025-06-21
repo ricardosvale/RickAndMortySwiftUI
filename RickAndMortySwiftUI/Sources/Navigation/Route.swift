@@ -8,5 +8,8 @@
 import Foundation
 
 enum Route: Hashable {
-    case characterDetail(Character)
+    case characters
+    case universe
+    case episodies
+   
 }
