@@ -12,4 +12,5 @@ enum Route: Hashable {
     case universe
     case episodies
     case characterDetailView(character: Character)
+    case episodeDetailView(episode: Episode)
 }
