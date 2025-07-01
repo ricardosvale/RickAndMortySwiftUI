@@ -9,6 +9,7 @@ import SwiftUI
 
 struct EpisodeView: View {
     
+    @EnvironmentObject var router: Router
     @StateObject private var viewModel = EpisodeViewModel()
     let rows = [GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible())]
     
@@ -21,7 +22,7 @@ struct EpisodeView: View {
             VStack(alignment: .leading) {
                 Text("EPISÓDIOS")
                     .font(.jockeyOne(size: 32))
-                    .padding(.top, 40)
+                    .padding(.top, 60)
                     .padding(.horizontal, 17)
                 if viewModel.isLoading && viewModel.sessions.isEmpty {
                     HStack {
@@ -50,16 +51,23 @@ struct EpisodeView: View {
                     LazyVStack {
                         ForEach(viewModel.filteredEpisodes) { episode in
                             CardEpisodes(episode: episode)
+                                .onTapGesture {
+                                    Task {
+                                        await viewModel.loadCharactersForEpisode(episode: episode)
+                                        router.push(.episodeDetailView(episode: episode,
+                                                                       characters: viewModel.character))
+                                    }
+                                }
                         }
-                        .padding(.horizontal, -5)
-                        .padding(.vertical, 2)
                     }
+                    .padding(.horizontal, -5)
+                    .padding(.vertical, 2)
                 }
-            }.padding(.bottom, 50)
-                .task {
-                    viewModel.loadEpisodes()
-                }
-        }
+            }
+        }.padding(.bottom, 50)
+            .task {
+                viewModel.loadEpisodes()
+            }
     }
 }
 
