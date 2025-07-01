@@ -15,11 +15,14 @@ final class EpisodeViewModel: ObservableObject {
     @Published var selectedSession: EpisodeSession?
     @Published var errorMessage: String?
     @Published var isLoading: Bool = false
+    @Published var character: [Character] = []
     
     private let service: EpisodeServiceProtocol
+    private let characterService: CharacterServiceProtocol
     
-    init(service: EpisodeServiceProtocol = EpisodesRequest()) {
+    init(service: EpisodeServiceProtocol = EpisodesRequest(), characterService: CharacterServiceProtocol = CharacterRequest()) {
         self.service = service
+        self.characterService = characterService
     }
     
     func loadEpisodes() {
@@ -69,5 +72,18 @@ final class EpisodeViewModel: ObservableObject {
     func filterEpisodes(season: EpisodeSession) {
         selectedSession = season
         filteredEpisodes = episodes.filter { $0.episode.hasPrefix(season.rawValue)}
+    }
+    
+    func loadCharactersForEpisode(episode: Episode) async {
+        var characterList: [Character] = []
+        for characterUrl in episode.characters {
+            do {
+                let character = try await characterService.fetchCharacter(url: characterUrl)
+                characterList.append(character)
+            } catch {
+                self.errorMessage = "Error loading characters"
+            }
+        }
+        self.character = characterList
     }
 }

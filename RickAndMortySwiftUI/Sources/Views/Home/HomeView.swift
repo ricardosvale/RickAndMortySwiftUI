@@ -31,7 +31,7 @@ struct HomeView: View {
                 
                 CardNavigationHome(title: "Episódios", description: "Todos os episódios da série com detalhes")
                     .onTapGesture {
-                        router.push(.episodies) 
+                        router.push(.episodies)
                     }
                 
                 Spacer()
@@ -49,6 +49,9 @@ struct HomeView: View {
                         .environmentObject(router)
                 case .characterDetailView(character: let character):
                     CharacterDetailsView(character: character)
+                        .environmentObject(router)
+                case .episodeDetailView(episode: let episode, let characters):
+                    EpisodesDetailsView(characters: characters, episode: episode)
                         .environmentObject(router)
                 }
             }
