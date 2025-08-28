@@ -13,4 +13,5 @@ enum Route: Hashable {
     case episodies
     case characterDetailView(character: Character)
     case episodeDetailView(episode: Episode, characters: [Character])
+    case locationDetailView(location: Location)
 }

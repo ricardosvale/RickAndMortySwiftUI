@@ -68,32 +68,24 @@ struct CharactersView: View {
                 }
             }
             .gesture(
-            DragGesture()
-                .onChanged { value in
-                    if value.translation.width > 50 {
-                        dragOffset = value.translation.width
+                DragGesture()
+                    .onChanged { value in
+                        if value.translation.width > 50 {
+                            dragOffset = value.translation.width
+                        }
                     }
-                }
-                .onEnded { value in
-                if value.translation.width > 100 {
-                        router.pop()
+                    .onEnded { value in
+                        if value.translation.width > 100 {
+                            router.pop()
+                        }
+                        dragOffset = 0
                     }
-                    dragOffset = 0
-                }
             )
         }
         .navigationBarBackButtonHidden(true)
         .toolbar {
             ToolbarItem(placement: .navigationBarLeading) {
-                Button(action: {
-                    router.pop()
-                }, label: {
-                    HStack {
-                        Image(systemName: "chevron.left")
-                        Text("Voltar")
-                    }
-                    .foregroundColor(.primary)
-                })
+                BackBarCustom()
             }
         }
     }

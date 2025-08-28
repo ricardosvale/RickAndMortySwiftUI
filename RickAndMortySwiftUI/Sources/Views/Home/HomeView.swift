@@ -53,6 +53,9 @@ struct HomeView: View {
                 case .episodeDetailView(episode: let episode, let characters):
                     EpisodesDetailsView(characters: characters, episode: episode)
                         .environmentObject(router)
+                case .locationDetailView(location: let location):
+                    LocationDetails(location: location)
+                        .environmentObject(router)
                 }
             }
         }

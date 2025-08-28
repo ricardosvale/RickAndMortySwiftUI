@@ -22,7 +22,7 @@ struct EpisodeView: View {
             VStack(alignment: .leading) {
                 Text("EPISÓDIOS")
                     .font(.jockeyOne(size: 32))
-                    .padding(.top, 60)
+                    .padding(.top, 80)
                     .padding(.horizontal, 17)
                 if viewModel.isLoading && viewModel.sessions.isEmpty {
                     HStack {
@@ -51,12 +51,14 @@ struct EpisodeView: View {
                     LazyVStack {
                         ForEach(viewModel.filteredEpisodes) { episode in
                             CardEpisodes(episode: episode)
-                                .onTapGesture {
+                                .onAppear {
                                     Task {
                                         await viewModel.loadCharactersForEpisode(episode: episode)
-                                        router.push(.episodeDetailView(episode: episode,
-                                                                       characters: viewModel.character))
                                     }
+                                }
+                                .onTapGesture {
+                                    router.push(.episodeDetailView(episode: episode,
+                                                                   characters: viewModel.character))
                                 }
                         }
                     }
@@ -64,10 +66,17 @@ struct EpisodeView: View {
                     .padding(.vertical, 2)
                 }
             }
-        }.padding(.bottom, 50)
-            .task {
-                viewModel.loadEpisodes()
+        }
+        .padding(.bottom, 50)
+        .task {
+            viewModel.loadEpisodes()
+        }
+        .navigationBarBackButtonHidden(true)
+        .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+                BackBarCustom()
             }
+        }
     }
 }
 

@@ -9,6 +9,7 @@ import SwiftUI
 
 struct LocationView: View {
     @StateObject private var viewModel = LocationViewModel()
+    @EnvironmentObject var router: Router
     
     var body: some View {
         ZStack {
@@ -35,6 +36,9 @@ struct LocationView: View {
                                         viewModel.loadMoreLocation()
                                     }
                                 }
+                                .onTapGesture {
+                                    router.push(.locationDetailView(location: location))
+                                }
                         }
                     }
                 }
@@ -44,9 +48,11 @@ struct LocationView: View {
                 viewModel.loadMoreLocation()
             }
         }
+        .navigationBarBackButtonHidden(true)
+        .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+            BackBarCustom()
+            }
+        }
     }
-}
-
-#Preview {
-    LocationView()
 }
