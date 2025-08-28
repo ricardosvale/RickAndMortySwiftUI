@@ -30,12 +30,12 @@ extension Character {
                    location: LocationCharacter(name: "Citadel of Ricks", url: ""),
                    image: "https://rickandmortyapi.com/api/character/avatar/1.jpeg",
                    episode: ["https://rickandmortyapi.com/api/episode/1", "https://rickandmortyapi.com/api/episode/2"]),
-         Character(id:2,
+         Character(id: 2,
                      name: "Morty Smith",
                      status: "Alive",
                      species: "Human",
                      gender: "Male",
-                     origin:Origin(
+                     origin: Origin(
                          name: "unknown",
                          url: ""),
                      location: LocationCharacter(

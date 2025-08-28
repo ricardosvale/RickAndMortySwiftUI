@@ -64,6 +64,12 @@ struct LocationDetails: View {
         .task {
             await viewModel.fetchCharacters(url: viewModel.location.residents)
         }
+        .navigationBarBackButtonHidden(true)
+        .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+                BackBarCustom(color: .accent)
+            }
+        }
     }
 }
 

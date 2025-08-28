@@ -6,7 +6,7 @@
 //
 import Foundation
 
-struct Character: Codable, Identifiable, Equatable {
+struct Character: Codable, Identifiable, Equatable, Hashable {
 
     let id: Int
     let name: String
