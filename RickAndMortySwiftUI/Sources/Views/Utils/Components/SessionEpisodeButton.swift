@@ -15,9 +15,10 @@ struct SessionEpisodeButton: View {
     var body: some View {
         Button(action: action) {
             Text(title)
-                .padding(.horizontal, 12)
+                .padding(.horizontal, 10)
                 .padding(.vertical, 4)
                 .font(.jost(.bold, size: 14))
+                .lineLimit(1)
                 .foregroundStyle(.black)
                 .background(isSelected ? .colorPrimary : .colorGray)
                 .cornerRadius(10)
@@ -26,5 +27,5 @@ struct SessionEpisodeButton: View {
 }
 
 #Preview {
-    SessionEpisodeButton(title: "Session 1", isSelected: true, action: {print("click") })
+    SessionEpisodeButton(title: "Session 4", isSelected: true, action: {print("click") })
 }

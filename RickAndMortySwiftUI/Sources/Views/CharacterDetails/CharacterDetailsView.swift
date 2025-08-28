@@ -26,6 +26,12 @@ struct CharacterDetailsView: View {
                     .offset(y: -20)
             }
         }
+        .navigationBarBackButtonHidden(true)
+        .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+                BackBarCustom()
+            }
+        }
     }
 }
    
