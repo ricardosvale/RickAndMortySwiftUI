@@ -10,6 +10,7 @@ import Foundation
 enum Endpoint {
     static let base = "https://rickandmortyapi.com/api/"
     static let characters = base + "character/?page="
+    static let searchcaracter = base + "character/?name="
     static let locations = base + "location/?page="
     static let episodes = base + "episode"
 }

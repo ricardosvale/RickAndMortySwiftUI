@@ -10,5 +10,6 @@ import Foundation
 protocol CharacterServiceProtocol {
   
     func fetchCharactesAwait(page: Int) async throws -> CharacterResponse
-    func fetchCharacter(url: String) async throws -> Character 
+    func fetchCharacter(url: String) async throws -> Character
+    func searchCharacters(name: String) async throws -> CharacterResponse
 }
